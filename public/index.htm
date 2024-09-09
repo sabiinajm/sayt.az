@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayt.az</title>
+    <!-- npx tailwindcss -i ./src/input.css -o ./public/style.css --watch -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="style.css" rel="stylesheet" />
+    <style>
+        .bg-gradient {
+            background-image: linear-gradient(90deg, #7028e4, #e5b2ca);
+        }
+
+        .scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: #7028e4 #ebebeb;
+            max-height: 300px;
+        }
+
+        @media only screen and (min-width: 1024px) {
+            .scrollbar {
+                max-height: 500px;
+            }
+        }
+
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #a271f2;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .range-slider::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #a271f2;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class=" max-w-[1920px] flex  justify-center items-center xsm:justify-between mx-auto p-4">
+                <svg width="131" height="35" class=" min-w-[50px]" viewBox="0 0 131 40" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_2391_1204)">
+                        <path
+                            d="M10.2789 31.0504C6.96305 31.0504 4.4557 30.4233 2.77754 29.1474C1.09937 27.8723 0.16676 25.9901 0.00128174 23.4809H2.46727C3.66878 23.4809 4.85051 24.1298 5.34694 25.2378C6.00976 26.7434 7.64745 27.4957 10.2375 27.4957C11.7709 27.4957 12.9517 27.1826 13.7809 26.5546C14.6092 25.9275 15.0031 25.1326 15.0031 24.1706C15.0031 23.5435 14.7963 23.0417 14.3817 22.6442C13.9671 22.2467 13.4284 21.9127 12.7449 21.6614C12.0614 21.3891 11.2943 21.1595 10.4246 20.9499C9.55404 20.7412 8.68439 20.5106 7.77246 20.281C6.88121 20.0514 5.99087 19.7592 5.12031 19.4244C4.24975 19.0895 3.48352 18.6711 2.80002 18.1493C2.11652 17.6266 1.57782 16.9995 1.16323 16.2254C0.748631 15.4722 0.541784 14.532 0.541784 13.424C0.541784 12.3994 0.748631 11.4583 1.16323 10.6225C1.57782 9.76491 2.17858 9.03346 2.9664 8.42725C3.75332 7.82103 4.70662 7.34006 5.82629 6.98432C6.94507 6.64945 8.23022 6.4616 9.65927 6.4616C12.8087 6.4616 15.1713 7.02606 16.7667 8.155C18.3622 9.28393 19.1904 10.9565 19.2741 13.1735H16.4358C15.3791 13.1735 14.4671 12.5464 13.9077 11.6053C13.2656 10.5181 11.9184 9.97363 9.86701 9.97363C9.26536 9.97363 8.70597 10.0362 8.16727 10.1624C7.62856 10.2876 7.1726 10.4755 6.80027 10.706C6.40636 10.9356 6.11678 11.2496 5.88834 11.6053C5.66081 11.9602 5.55649 12.3585 5.55649 12.8177C5.55649 13.2152 5.61854 13.5501 5.72197 13.8423C5.82629 14.1345 6.09519 14.4068 6.4882 14.6364C6.88211 14.8878 7.48287 15.1382 8.27069 15.3687C9.05851 15.6201 10.1152 15.8915 11.4409 16.2263C12.9329 16.6238 14.2387 17.0213 15.3161 17.4179C16.3935 17.8154 17.2847 18.2755 17.9682 18.7973C18.6526 19.3409 19.1707 19.9689 19.4809 20.7212C19.8128 21.4526 19.9567 22.3937 19.9567 23.4809C19.9567 24.5681 19.7507 25.5727 19.3361 26.492C18.9215 27.4113 18.3208 28.2063 17.4916 28.876C16.684 29.5448 15.6686 30.0676 14.4662 30.4442C13.2647 30.8199 11.8554 31.0086 10.2393 31.0086L10.2807 31.0504H10.2789ZM116.68 26.3668L130.233 11.2705V7.23479H107.957V7.77838C108.62 8.34285 109.159 9.05342 109.511 9.95276C109.676 10.3502 109.801 10.8312 109.905 11.3539H123.622L110.07 26.4503V30.4859H131V29.4822C131 27.7471 129.611 26.3459 127.892 26.3459H116.661L116.68 26.3668ZM107.606 10.9565C107.171 9.86927 106.508 9.03255 105.617 8.42634C104.684 7.79925 103.649 7.33915 102.447 7.0669C101.266 6.79556 99.8979 6.66941 98.3447 6.66941C91.7967 6.66941 88.3774 9.07429 88.0662 13.8832H90.5529C91.6923 13.8832 92.8327 13.2978 93.3291 12.2524C93.5576 11.7923 93.8885 11.3948 94.3031 11.1026C95.1728 10.4954 96.4166 10.1824 98.0534 10.1824C99.7522 10.1824 100.974 10.4954 101.721 11.1652C102.301 11.6253 102.695 12.2524 102.881 13.0682C102.964 13.3813 103.005 13.7997 103.027 14.3433C103.047 14.866 103.068 15.4931 103.068 16.1828H101.099C96.4588 16.1828 92.9775 16.8516 90.677 18.1902C88.854 19.2574 87.7766 20.7402 87.3827 22.6433C88.0455 23.166 88.6049 23.8149 89.0411 24.5672C89.2273 24.8803 89.3927 25.1943 89.4962 25.5291C89.7866 26.3032 89.9521 27.1182 89.9521 27.9966C89.9521 28.4985 89.8901 29.0003 89.7866 29.4604C90.471 29.9414 91.2373 30.318 92.1069 30.5894C93.0809 30.8825 94.0963 31.0286 95.1944 31.0286C98.4059 31.0286 101.037 30.1084 103.109 28.2471V30.485H105.14C106.86 30.485 108.248 29.0838 108.248 27.3487V15.4096C108.248 13.5065 108.021 12.0219 107.585 10.9347L107.606 10.9565ZM103.089 24.3594C102.758 24.8195 102.364 25.2369 101.929 25.6135C101.473 25.9901 100.996 26.3041 100.457 26.5546C99.9186 26.806 99.3592 27.0147 98.7584 27.1617C98.1577 27.3078 97.5569 27.3705 96.9355 27.3705C95.5883 27.3705 94.5118 27.0773 93.7239 26.5129C92.9163 25.9484 92.5215 25.0908 92.5215 23.9828C92.5215 22.4563 93.205 21.3274 94.5522 20.595C95.8994 19.8636 97.9301 19.5079 100.602 19.5079H103.089V24.3793V24.3594ZM76.7103 27.9975C76.7103 27.6209 76.7516 27.2443 76.8137 26.8895C76.7516 26.8895 76.6896 26.8895 76.6275 26.8895C76.275 26.8895 75.9647 26.8477 75.6949 26.7425C75.4251 26.6381 75.1769 26.4711 74.9898 26.1989C74.8037 25.9266 74.658 25.5718 74.5546 25.0899C74.4502 24.6089 74.4089 23.9818 74.4089 23.2295V10.9347H75.0717C76.7912 10.9347 78.1798 9.53349 78.1798 7.79835V7.00337H74.408V3.1356C74.408 1.40045 73.0194 -0.000732422 71.2999 -0.000732422H69.2071V7.00428C67.5703 7.00428 66.2438 8.34285 66.2438 9.9945V10.9356H69.2071V23.8784C69.2071 25.0491 69.2898 26.0528 69.4562 26.9312C69.6217 27.8088 69.9329 28.5203 70.4095 29.1056C70.8655 29.6701 71.5076 30.1093 72.3368 30.4024C73.1444 30.6946 74.2011 30.8417 75.4863 30.8417C76.087 30.8417 76.6464 30.8208 77.1438 30.779C77.1851 30.779 77.2481 30.7582 77.2895 30.7582C77.2274 30.5912 77.1653 30.4233 77.124 30.2563C76.8749 29.5666 76.7507 28.8134 76.7507 28.0402L76.7103 27.9975ZM60.0716 7.02606H61.087C63.2427 7.02606 64.7554 9.20044 63.9882 11.2496L56.9024 30.5068C56.4464 31.741 56.0111 32.8282 55.6172 33.7484C55.2233 34.6686 54.8303 35.4209 54.4571 36.0271C54.1468 36.529 53.7943 37.0308 53.4003 37.5118C53.0064 37.9928 52.5712 38.4111 52.0738 38.7868C51.5765 39.1626 51.0378 39.4557 50.4163 39.6644C49.8156 39.8949 49.1312 39.9993 48.3856 39.9993C47.7426 39.9993 47.2246 39.9575 46.8316 39.8949C46.0851 39.7697 45.5464 39.1208 45.5464 38.3685V35.1069C45.9197 35.253 46.2929 35.3583 46.6652 35.4C47.0384 35.4627 47.4117 35.4835 47.7633 35.4835C48.2606 35.4835 48.6959 35.3783 49.1105 35.1695C49.5044 34.9608 49.8767 34.6468 50.2086 34.2285C50.5405 33.8101 50.8507 33.2874 51.1619 32.6603C51.4515 32.0332 51.7627 31.3226 52.0316 30.4859L43.3287 7.02606H46.5411C47.8883 7.02606 49.0691 7.90362 49.4837 9.17957L52.1359 17.3553C52.5298 18.6094 52.9228 19.8645 53.2753 21.0978C53.6486 22.3311 54.0416 23.5653 54.4562 24.7986L60.0501 7.02606H60.0716ZM38.189 28.2489C36.0962 30.1102 33.444 31.0504 30.1902 31.0504C29.0922 31.0504 28.0561 30.9043 27.0821 30.6112C26.1081 30.318 25.2376 29.8788 24.5127 29.3143C23.787 28.7499 23.1862 28.0393 22.7716 27.1817C22.3363 26.345 22.1295 25.3622 22.1295 24.2332C22.1295 21.4944 23.2896 19.4461 25.6315 18.0867C27.9518 16.7273 31.4754 16.0584 36.1376 16.0584H38.1269C38.1269 15.347 38.1062 14.7407 38.0855 14.1971C38.0648 13.6536 38.0028 13.2352 37.9398 12.9221C37.7537 12.1072 37.3598 11.4792 36.7797 10.9982C36.0332 10.3493 34.811 10.0154 33.0915 10.0154C31.434 10.0154 30.1696 10.3285 29.2999 10.9347C28.8646 11.2487 28.5337 11.6253 28.3052 12.1063C27.8079 13.1517 26.6684 13.7579 25.5074 13.7579H23C23.2896 8.90732 26.7503 6.48065 33.3604 6.48065C34.9145 6.48065 36.303 6.62767 37.5046 6.87814C38.707 7.14948 39.7637 7.60959 40.6954 8.23758C41.6073 8.84379 42.2701 9.70138 42.7054 10.7886C43.1407 11.8758 43.3682 13.3813 43.3682 15.3052V27.3696C43.3682 29.1047 41.9797 30.5059 40.2601 30.5059H38.1872V28.248L38.189 28.2489ZM38.1476 19.4253H35.6402C32.9467 19.4253 30.8953 19.8019 29.5274 20.5333C28.1595 21.2657 27.476 22.4155 27.476 23.9628C27.476 25.0917 27.87 25.9493 28.6776 26.5138C29.4861 27.0782 30.5635 27.3714 31.9314 27.3714C32.5528 27.3714 33.1536 27.3088 33.7759 27.1626C34.3767 27.0165 34.9567 26.8078 35.4954 26.5564C36.0341 26.2851 36.5315 25.9711 36.9874 25.5945C37.4434 25.2179 37.8373 24.7995 38.1683 24.3394V19.4262L38.1476 19.4253Z"
+                            fill="#334155" />
+                        <path
+                            d="M83.2174 32.4942C85.6825 32.4942 87.6718 30.4868 87.6718 27.9985C87.6718 25.5101 85.6834 23.5027 83.2174 23.5027C80.7514 23.5027 78.7621 25.5101 78.7621 27.9985C78.7621 30.4868 80.7514 32.4942 83.2174 32.4942Z"
+                            fill="#7D3BE2" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_2391_1204">
+                            <rect width="131" height="40" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
+                <div class="flex items-center gap-4 lg:order-2">
+                    <div class="flex order-2 gap-4">
+                        <button
+                            class=" text-md h-11 w-full text-white bg-gradient min-w-[200px] hidden xl:block px-6 rounded-lg font-semibold ">Qiymət
+                            Təklifi Al</button>
+                        <button
+                            class="font-semibold order-2 text-md h-11 w-full min-w-[190px] px-6 hidden xl:block border text-[#a271f2]  border-[#a271f2] rounded-lg">Daxil
+                            olun</button>
+                    </div>
+
+                    <div class="relative">
+                        <button type="button" data-dropdown-toggle="currency-dropdown-menu" onclick="drop(this)"
+                            class="inline-flex items-center font-medium justify-center px-2 sm:px-4 py-2 text-xl rounded-lg cursor-pointer group text-[#300b60]">
+                            ₼ <svg class="w-2.5 h-2.5 ms-2.5 text-gray-400 group-hover:text-[#300b60]"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <div class="z-50 hidden absolute top-6 left-0 my-4 list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
+                            id="currency-dropdown-menu">
+                            <ul class="py-2 font-medium text-lg" role="none">
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-[#a271f259]"
+                                        role="menuitem">
+                                        <div class="inline-flex items-center">
+                                            $
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-[#a271f259] "
+                                        role="menuitem">
+                                        <div class="inline-flex items-center">
+                                            ₼
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <button type="button" data-dropdown-toggle="language-dropdown-menu" onclick="drop(this)"
+                            class="inline-flex items-center font-medium justify-center group px-2 sm:px-4 py-2 text-xl  rounded-lg cursor-pointer">
+                            <img src="images/azerbaijan.png" class="h-6" alt="azicon" /> <svg
+                                class="w-2.5 h-2.5 ms-2.5 text-gray-400 group-hover:text-[#300b60]" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <div class="z-50 hidden absolute top-6 left-3 my-4 list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
+                            id="language-dropdown-menu">
+                            <ul class="py-2 font-medium text-lg " role="none">
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-[#a271f259]"
+                                        role="menuitem">
+                                        <div class="inline-flex items-center">
+                                            <img src="images/united-states.png" class="h-6" alt="azicon" />
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-[#a271f259] "
+                                        role="menuitem">
+                                        <div class="inline-flex items-center">
+                                            <img src="images/azerbaijan.png" class="h-6" alt="azicon" />
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="button" onclick="controlMenu()"
+                        class="inline-flex items-center p-1 sm:p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-[#a271f259] focus:outline-none">
+                        <span class="sr-only">Hamburger menu</span>
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 1h15M1 7h15M1 13h15" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="items-center z-50 justify-between hidden fixed  top-0 right-0 w-full xsm:w-0 xsm:min-w-96 h-screen lg:h-auto  lg:static lg:flex lg:w-auto lg:order-1"
+                    id="hamburger-menu">
+                    <ul
+                        class="flex whitespace-nowrap flex-col gap-2 justify-center  font-medium p-4 h-screen lg:h-auto lg:p-0 border border-gray-100 rounded-lg bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:border-0 lg:bg-white">
+                        <button onclick="controlMenu()"><i
+                                class="fa-solid fa-xmark p-2 w-10 h-10 flex items-center hover:bg-[#a271f259] rounded-lg lg:hidden absolute top-4 right-4 text-3xl text-gray-700"></i></button>
+                        <li class="relative">
+                            <button data-dropdown-toggle="dropVebSayt" onclick="drop(this)"
+                                class="flex items-center justify-start w-full py-2 px-3 text-gray-900 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#8e67c0] lg:p-0 lg:w-auto ">Veb
+                                sayt
+                                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg></button>
+                            <div id="dropVebSayt"
+                                class="z-10 hidden absolute lg:-left-32  max-h-96 scrollbar overflow-y-scroll top-10 lg:top-8 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-auto ">
+                                <ul class="py-2 whitespace-normal w-auto xsm:w-[340px] lg:w-[400px] text-sm lg:text-[1.1rem] text-gray-700 "
+                                    aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe]  hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/lJ9i3mHSrGbIyOFk6VnqpcyzeZgiKmjyiUfdEhAc.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Hökumət və Qeyri-kommersiya Saytları</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Hökumət və
+                                                    Qeyri-kommersiya Saytları</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/fcdQoEskESpjwrkLUcNKqvm0ZFwzn7kAspkBfwI5.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Kiçik biznes saytları</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Kiçik
+                                                    bizneslər üçün saytlar</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/vQyageZW9Eb4rKazAWwrY3xUTem15TN9Ofdk8oUk.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>E-ticarət saytları</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">E-ticarət
+                                                    saytları</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/otN2FW4K7vPTfJRqYOqYJMRj1VZDil02yYCmA0mx.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Hüquq firma saytı</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Hüquq firma
+                                                    saytı</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/zJjPDvohOxpgJj7wenVSBaGbTgNOuigFvjxLmhw5.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Bloqlar və Şəxsi Vebsayt</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Bloqlar və
+                                                    Şəxsi Vebsayt</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/RG2ZavDFVNsih7XSr36x2pxKPQxXekuAgO2VXif6.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Daşınmaz əmlak veb saytı</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Daşınmaz
+                                                    əmlak veb saytı</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/khwNG7uXgAPtW9wilTtK12LaUADpZgeQb3UvOqvB.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Tibb - Doktor Saytları</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Tibb Doktor
+                                                    Saytları</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/qKRz4fKbiAGalPgCtcAGVuV5AnCAhx8WkRAMdV3L.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>WordPress Saytları</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">WordPress
+                                                    Saytları</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="relative">
+                            <button data-dropdown-toggle="dropDomen" onclick="drop(this)"
+                                class="flex items-center justify-start w-full py-2 px-3 text-gray-900 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#8e67c0] lg:p-0 lg:w-auto ">Domen
+                                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg></button>
+                            <div id="dropDomen"
+                                class="z-10 hidden absolute lg:-left-32 max-h-96 top-10 lg:top-8 scrollbar overflow-y-scroll font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-auto ">
+                                <ul class="py-2 whitespace-normal w-auto xsm:w-[340px] lg:w-[400px] text-sm  lg:text-[1.1rem] text-gray-700 "
+                                    aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0.5 4.5H20.5" stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M3.5 2.25C3.36193 2.25 3.25 2.36193 3.25 2.5C3.25 2.63807 3.36193 2.75 3.5 2.75C3.63807 2.75 3.75 2.63807 3.75 2.5C3.75 2.36193 3.63807 2.25 3.5 2.25V2.25"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M5.5 2.25C5.36193 2.25 5.25 2.36193 5.25 2.5C5.25 2.63807 5.36193 2.75 5.5 2.75C5.63807 2.75 5.75 2.63807 5.75 2.5C5.75 2.36193 5.63807 2.25 5.5 2.25V2.25"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.5 2.25C7.36193 2.25 7.25 2.36193 7.25 2.5C7.25 2.63807 7.36193 2.75 7.5 2.75C7.63807 2.75 7.75 2.63807 7.75 2.5C7.75 2.36193 7.63807 2.25 7.5 2.25V2.25"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.5 16.5H2.5C1.39543 16.5 0.5 15.6046 0.5 14.5V2.5C0.5 1.39543 1.39543 0.5 2.5 0.5H18.5C19.6046 0.5 20.5 1.39543 20.5 2.5V8.5"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M16.5 23.5C14.5 22 13.5 19 13.5 16.5C13.5 14 14.5 11 16.5 9.5"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M16.5 23.5C18.5 22 19.5 19 19.5 16.5C19.5 14 18.5 11 16.5 9.5"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M10.1741 13.5H22.8261" stroke="#A271F2"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M10.1741 19.5H22.8261" stroke="#A271F2"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M9.5 16.5H23.5" stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M16.5 23.5C20.366 23.5 23.5 20.366 23.5 16.5C23.5 12.634 20.366 9.5 16.5 9.5C12.634 9.5 9.5 12.634 9.5 16.5C9.5 20.366 12.634 23.5 16.5 23.5Z"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Domen</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Etibarlı
+                                                    Xidmət</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M23.5 12C23.4986 17.7945 19.1839 22.6817 13.4343 23.4013C7.68464 24.1209 2.29853 20.4478 0.869149 14.8324C-0.560231 9.21697 2.41421 3.4157 7.80816 1.29876C13.2021 -0.818182 19.3284 1.41136 22.1 6.5C23.0206 8.18687 23.5021 10.0783 23.5 12V12Z"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M17.0169 6.5C16.0829 3.98342 14.3114 1.86484 11.9999 0.5C9.68845 1.86484 7.91697 3.98342 6.98291 6.5"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M6.98193 17.5C7.91674 20.0164 9.68847 22.1349 11.9999 23.5C14.4207 22.2458 16.2521 20.0912 17.0999 17.5"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M3.28198 4.5H20.718" stroke="#A271F2"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.28198 19.5H20.718" stroke="#A271F2"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M9.5 10V11.345C9.50024 12.1082 9.64584 12.8643 9.929 13.573L10.5 15L11.5 11.5L12.5 15L13.071 13.573C13.3542 12.8643 13.4998 12.1082 13.5 11.345V10"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M15.5 10V11.345C15.5002 12.1082 15.6458 12.8643 15.929 13.573L16.5 15L17.5 11.5L18.5 15L19.071 13.573C19.3542 12.8643 19.4998 12.1082 19.5 11.345V10"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M3.5 10V11.345C3.50024 12.1082 3.64584 12.8643 3.929 13.573L4.5 15L5.5 11.5L6.5 15L7.071 13.573C7.35416 12.8643 7.49976 12.1082 7.5 11.345V10"
+                                                        stroke="#A271F2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Pulsuz Domen Qeydiyyatı</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Sürətli
+                                                    Qeydiyyatı</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="relative">
+                            <button data-dropdown-toggle="drophost" onclick="drop(this)"
+                                class="flex items-center justify-start w-full py-2 px-3 text-gray-900 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#8e67c0] lg:p-0 lg:w-auto ">Hostinq
+                                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg></button>
+                            <div id="drophost"
+                                class="z-10 hidden absolute lg:-left-32 max-h-96 top-10 lg:top-8 scrollbar overflow-y-scroll font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-auto ">
+                                <ul class="py-2 whitespace-normal w-auto xsm:w-[340px] lg:w-[400px] text-sm  lg:text-[1.1rem] text-gray-700 "
+                                    aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clipPath="url(#clip0_1138_482)">
+                                                        <path
+                                                            d="M27.1797 19.7422C27.6327 19.7422 28 19.3749 28 18.9219V2.51562C28 2.06259 27.6327 1.69531 27.1797 1.69531H20.2891V0.820312C20.2891 0.367281 19.9218 0 19.4688 0H8.53125C8.07822 0 7.71094 0.367281 7.71094 0.820312V1.69531H0.820312C0.367281 1.69531 0 2.06259 0 2.51562V18.9219C0 19.3749 0.367281 19.7422 0.820312 19.7422H4.97656V23.1538C4.24151 23.4016 3.65941 23.9837 3.41157 24.7188H0.820312C0.367281 24.7188 0 25.086 0 25.5391C0 25.9921 0.367281 26.3594 0.820312 26.3594H3.43011C3.77754 27.3153 4.69503 28 5.76953 28C6.84403 28 7.76152 27.3153 8.10895 26.3594H11.6879C12.0354 27.3153 12.9528 28 14.0273 28C15.1018 28 16.0193 27.3153 16.3668 26.3594H19.891C20.2385 27.3153 21.156 28 22.2305 28C23.305 28 24.2225 27.3153 24.5699 26.3594H27.1797C27.6327 26.3594 28 25.9921 28 25.5391C28 25.086 27.6327 24.7188 27.1797 24.7188H24.5884C24.3406 23.9837 23.7584 23.4016 23.0234 23.1538V19.7422H27.1797ZM26.3594 3.33594V18.1016H20.2891V16.4609H23.8438C24.2968 16.4609 24.6641 16.0937 24.6641 15.6406C24.6641 15.1876 24.2968 14.8203 23.8438 14.8203H20.2891V13.1797H23.8438C24.2968 13.1797 24.6641 12.8124 24.6641 12.3594C24.6641 11.9063 24.2968 11.5391 23.8438 11.5391H20.2891V9.89844H23.8438C24.2968 9.89844 24.6641 9.53116 24.6641 9.07812C24.6641 8.62509 24.2968 8.25781 23.8438 8.25781H20.2891V6.61719H23.8438C24.2968 6.61719 24.6641 6.24991 24.6641 5.79688C24.6641 5.34384 24.2968 4.97656 23.8438 4.97656H20.2891V3.33594H26.3594ZM9.35156 1.64062H18.6484V19.6875H9.35156V1.64062ZM1.64062 3.33594H7.71094V4.97656H4.15625C3.70322 4.97656 3.33594 5.34384 3.33594 5.79688C3.33594 6.24991 3.70322 6.61719 4.15625 6.61719H7.71094V8.25781H4.15625C3.70322 8.25781 3.33594 8.62509 3.33594 9.07812C3.33594 9.53116 3.70322 9.89844 4.15625 9.89844H7.71094V11.5391H4.15625C3.70322 11.5391 3.33594 11.9063 3.33594 12.3594C3.33594 12.8124 3.70322 13.1797 4.15625 13.1797H7.71094V14.8203H4.15625C3.70322 14.8203 3.33594 15.1876 3.33594 15.6406C3.33594 16.0937 3.70322 16.4609 4.15625 16.4609H7.71094V18.1016H1.64062V3.33594ZM7.71094 19.7422V20.5078C7.71094 20.9608 8.07822 21.3281 8.53125 21.3281H13.1797V23.1723C12.4704 23.4301 11.9111 24.002 11.6694 24.7188H8.12749C7.88577 24.002 7.32648 23.4301 6.61719 23.1723V19.7422H7.71094ZM5.76953 26.3594C5.30212 26.3594 4.92188 25.9791 4.92188 25.5117C4.92188 25.0443 5.30212 24.6641 5.76953 24.6641C6.23695 24.6641 6.61719 25.0443 6.61719 25.5117C6.61719 25.9791 6.23695 26.3594 5.76953 26.3594ZM14.0273 26.3594C13.5599 26.3594 13.1797 25.9791 13.1797 25.5117C13.1797 25.0443 13.5599 24.6641 14.0273 24.6641C14.4948 24.6641 14.875 25.0443 14.875 25.5117C14.875 25.9791 14.4948 26.3594 14.0273 26.3594ZM22.2305 26.3594C21.7631 26.3594 21.3828 25.9791 21.3828 25.5117C21.3828 25.0443 21.7631 24.6641 22.2305 24.6641C22.6979 24.6641 23.0781 25.0443 23.0781 25.5117C23.0781 25.9791 22.6979 26.3594 22.2305 26.3594ZM21.3828 23.1723C20.6735 23.4301 20.1142 24.002 19.8725 24.7188H16.3853C16.1375 23.9837 15.5553 23.4016 14.8203 23.1538V21.3281H19.4688C19.9218 21.3281 20.2891 20.9608 20.2891 20.5078V19.7422H21.3828V23.1723Z"
+                                                            fill="#a271f2" />
+                                                        <path
+                                                            d="M11.8125 4.97656H16.2422C16.6952 4.97656 17.0625 4.60928 17.0625 4.15625C17.0625 3.70322 16.6952 3.33594 16.2422 3.33594H11.8125C11.3595 3.33594 10.9922 3.70322 10.9922 4.15625C10.9922 4.60928 11.3595 4.97656 11.8125 4.97656ZM11.8125 8.25781H16.2422C16.6952 8.25781 17.0625 7.89053 17.0625 7.4375C17.0625 6.98447 16.6952 6.61719 16.2422 6.61719H11.8125C11.3595 6.61719 10.9922 6.98447 10.9922 7.4375C10.9922 7.89053 11.3595 8.25781 11.8125 8.25781ZM11.8125 11.5391H16.1875C16.6405 11.5391 17.0078 11.1718 17.0078 10.7188C17.0078 10.2657 16.6405 9.89844 16.1875 9.89844H11.8125C11.3595 9.89844 10.9922 10.2657 10.9922 10.7188C10.9922 11.1718 11.3595 11.5391 11.8125 11.5391ZM11.8125 14.8203H16.1875C16.6405 14.8203 17.0078 14.453 17.0078 14C17.0078 13.547 16.6405 13.1797 16.1875 13.1797H11.8125C11.3595 13.1797 10.9922 13.547 10.9922 14C10.9922 14.453 11.3595 14.8203 11.8125 14.8203Z"
+                                                            fill="#a271f2" />
+                                                        <path
+                                                            d="M14 18.1016C14.453 18.1016 14.8203 17.7343 14.8203 17.2812C14.8203 16.8282 14.453 16.4609 14 16.4609C13.547 16.4609 13.1797 16.8282 13.1797 17.2812C13.1797 17.7343 13.547 18.1016 14 18.1016Z"
+                                                            fill="#a271f2" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1138_482">
+                                                            <rect width="28" height="28" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Veb Hostinq</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">
+                                                    ₼10.00/ay-dan başlayaraq</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg width="28" height="26" viewBox="0 0 28 26" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="28" height="26" fill="transparent" />
+                                                    <g id="Menu">
+                                                        <rect width="360" height="800" transform="translate(-42 -293)"
+                                                            fill="transparent" />
+                                                        <g id="Drop-down">
+                                                            <g id="VPS-option">
+                                                                <rect id="bg" x="-10" y="-11" width="48" height="48"
+                                                                    rx="8" fill="transparent" />
+                                                                <g id="vps-icon" clip-path="url(#clip0_1863_392)">
+                                                                    <g id="Group">
+                                                                        <path id="Vector"
+                                                                            d="M3.28125 4.10468C3.28125 3.65807 3.6433 3.29602 4.08991 3.29602H4.11322C4.55983 3.29602 4.92188 3.65807 4.92188 4.10468C4.92188 4.55129 4.55983 4.91334 4.11322 4.91334H4.08991C3.6433 4.91334 3.28125 4.55129 3.28125 4.10468ZM6.5625 4.10468C6.5625 3.65807 6.92455 3.29602 7.37116 3.29602H7.39447C7.84108 3.29602 8.20312 3.65807 8.20312 4.10468C8.20312 4.55129 7.84108 4.91334 7.39447 4.91334H7.37116C6.92455 4.91334 6.5625 4.55129 6.5625 4.10468ZM9.84375 4.10468C9.84375 3.65807 10.2058 3.29602 10.6524 3.29602H10.6757C11.1223 3.29602 11.4844 3.65807 11.4844 4.10468C11.4844 4.55129 11.1223 4.91334 10.6757 4.91334H10.6524C10.2058 4.91334 9.84375 4.55129 9.84375 4.10468ZM3.28125 10.574C3.28125 10.1273 3.6433 9.7653 4.08991 9.7653H4.11322C4.55983 9.7653 4.92188 10.1273 4.92188 10.574C4.92188 11.0206 4.55983 11.3826 4.11322 11.3826H4.08991C3.6433 11.3826 3.28125 11.0206 3.28125 10.574ZM6.5625 10.574C6.5625 10.1273 6.92455 9.7653 7.37116 9.7653H7.39447C7.84108 9.7653 8.20312 10.1273 8.20312 10.574C8.20312 11.0206 7.84108 11.3826 7.39447 11.3826H7.37116C6.92455 11.3826 6.5625 11.0206 6.5625 10.574ZM9.84375 10.574C9.84375 10.1273 10.2058 9.7653 10.6524 9.7653H10.6757C11.1223 9.7653 11.4844 10.1273 11.4844 10.574C11.4844 11.0206 11.1223 11.3826 10.6757 11.3826H10.6524C10.2058 11.3826 9.84375 11.0206 9.84375 10.574ZM3.28125 17.0432C3.28125 16.5966 3.6433 16.2346 4.08991 16.2346H4.11322C4.55983 16.2346 4.92188 16.5966 4.92188 17.0432C4.92188 17.4898 4.55983 17.8519 4.11322 17.8519H4.08991C3.6433 17.8519 3.28125 17.4898 3.28125 17.0432ZM6.5625 17.0432C6.5625 16.5966 6.92455 16.2346 7.37116 16.2346H7.39447C7.84108 16.2346 8.20312 16.5966 8.20312 17.0432C8.20312 17.4898 7.84108 17.8519 7.39447 17.8519H7.37116C6.92455 17.8519 6.5625 17.4898 6.5625 17.0432Z"
+                                                                            fill="#a271f2" />
+                                                                        <path id="Vector_2"
+                                                                            d="M6.5625 22.7039C6.5625 24.4874 8.03447 25.9385 9.84375 25.9385H23.0234C25.7535 25.9385 28 23.7588 28 21.0865C28 18.4169 25.756 16.2346 23.0234 16.2346H22.7423C22.4629 15.4562 21.9888 14.7747 21.3828 14.2405V1.5614C21.3828 0.732975 20.7112 0.0614014 19.8828 0.0614014H1.5C0.671573 0.0614014 0 0.732974 0 1.5614V19.586C0 20.4144 0.671573 21.086 1.5 21.086H7.00394C6.71436 21.5774 6.56204 22.1356 6.5625 22.7039ZM23.0234 17.8519C24.8629 17.8519 26.3594 19.303 26.3594 21.0865C26.3594 22.8701 24.8629 24.3212 23.0234 24.3212H9.84375C8.93911 24.3212 8.20312 23.5957 8.20312 22.7039C8.20312 21.8106 8.93911 21.0865 9.84375 21.0865H11.4844V20.2779C11.4844 18.9402 12.5884 17.8519 13.9453 17.8519H14.6985L14.8319 17.2042C15.1406 15.7052 16.5157 14.6173 18.1016 14.6173C19.6557 14.6173 21.0078 15.7052 21.3165 17.2042L21.4499 17.8519H23.0234ZM1.64062 1.67872H19.7422V6.53068H1.64062V1.67872ZM1.64062 8.148H19.7422V13H1.64062V8.148ZM1.64062 14.6167H14.3927C13.9559 15.0907 13.612 15.6506 13.3937 16.271C11.6631 16.5014 10.2713 17.8 9.92616 19.4692H1.64062V14.6167Z"
+                                                                            fill="#a271f2" />
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1863_392">
+                                                            <rect width="28" height="26" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>VPS</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">
+                                                    ₼15.00/ay-dan başlayaraq</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="server-icon" clip-path="url(#clip0_2372_430)">
+                                                        <g id="Group">
+                                                            <path id="Vector"
+                                                                d="M25.5117 23.0234C24.4169 23.0234 23.4857 23.7345 23.1538 24.7188H16.3853C16.1375 23.9837 15.5553 23.4016 14.8203 23.1538V21.3828H23.8438C24.2968 21.3828 24.6641 21.0155 24.6641 20.5625V0.820312C24.6641 0.367281 24.2968 0 23.8438 0H4.15625C3.70322 0 3.33594 0.367281 3.33594 0.820312V20.5625C3.33594 21.0155 3.70322 21.3828 4.15625 21.3828H13.1797V23.1723C12.4704 23.4301 11.9111 24.002 11.6694 24.7188H4.84624C4.51434 23.7345 3.58307 23.0234 2.48828 23.0234C1.11623 23.0234 0 24.1397 0 25.5117C0 26.8838 1.11623 28 2.48828 28C3.56278 28 4.48027 27.3153 4.8277 26.3594H11.6879C12.4815 28.5429 15.5741 28.5404 16.3668 26.3594H23.1723C23.5197 27.3153 24.4372 28 25.5117 28C26.8838 28 28 26.8838 28 25.5117C28 24.1397 26.8838 23.0234 25.5117 23.0234ZM4.97656 8.25781H23.0234V13.1797H4.97656V8.25781ZM23.0234 1.64062V6.61719H4.97656V1.64062H23.0234ZM4.97656 14.8203H23.0234V19.7422H4.97656V14.8203ZM2.48828 26.3594C2.02087 26.3594 1.64062 25.9791 1.64062 25.5117C1.64062 25.0443 2.02087 24.6641 2.48828 24.6641C2.9557 24.6641 3.33594 25.0443 3.33594 25.5117C3.33594 25.9791 2.9557 26.3594 2.48828 26.3594ZM14.0273 26.3594C13.5599 26.3594 13.1797 25.9791 13.1797 25.5117C13.1797 25.0443 13.5599 24.6641 14.0273 24.6641C14.4948 24.6641 14.875 25.0443 14.875 25.5117C14.875 25.9791 14.4948 26.3594 14.0273 26.3594ZM25.5117 26.3594C25.0443 26.3594 24.6641 25.9791 24.6641 25.5117C24.6641 25.0443 25.0443 24.6641 25.5117 24.6641C25.9791 24.6641 26.3594 25.0443 26.3594 25.5117C26.3594 25.9791 25.9791 26.3594 25.5117 26.3594Z"
+                                                                fill="#a271f2" />
+                                                            <path id="Vector_2"
+                                                                d="M7.4375 4.97656C7.89055 4.97656 8.25781 4.6093 8.25781 4.15625C8.25781 3.7032 7.89055 3.33594 7.4375 3.33594C6.98445 3.33594 6.61719 3.7032 6.61719 4.15625C6.61719 4.6093 6.98445 4.97656 7.4375 4.97656Z"
+                                                                fill="#a271f2" />
+                                                            <path id="Vector_3"
+                                                                d="M7.4375 11.5391C7.89055 11.5391 8.25781 11.1718 8.25781 10.7188C8.25781 10.2657 7.89055 9.89844 7.4375 9.89844C6.98445 9.89844 6.61719 10.2657 6.61719 10.7188C6.61719 11.1718 6.98445 11.5391 7.4375 11.5391Z"
+                                                                fill="#a271f2" />
+                                                            <path id="Vector_4"
+                                                                d="M7.4375 18.1016C7.89055 18.1016 8.25781 17.7343 8.25781 17.2812C8.25781 16.8282 7.89055 16.4609 7.4375 16.4609C6.98445 16.4609 6.61719 16.8282 6.61719 17.2812C6.61719 17.7343 6.98445 18.1016 7.4375 18.1016Z"
+                                                                fill="#a271f2" />
+                                                            <path id="Vector_5"
+                                                                d="M10.7188 4.97656H20.5625C21.0155 4.97656 21.3828 4.60928 21.3828 4.15625C21.3828 3.70322 21.0155 3.33594 20.5625 3.33594H10.7188C10.2657 3.33594 9.89844 3.70322 9.89844 4.15625C9.89844 4.60928 10.2657 4.97656 10.7188 4.97656ZM20.5625 9.89844H10.7188C10.2657 9.89844 9.89844 10.2657 9.89844 10.7188C9.89844 11.1718 10.2657 11.5391 10.7188 11.5391H20.5625C21.0155 11.5391 21.3828 11.1718 21.3828 10.7188C21.3828 10.2657 21.0155 9.89844 20.5625 9.89844ZM21.3828 17.2812C21.3828 16.8282 21.0155 16.4609 20.5625 16.4609H10.7188C10.2657 16.4609 9.89844 16.8282 9.89844 17.2812C9.89844 17.7343 10.2657 18.1016 10.7188 18.1016H20.5625C21.0155 18.1016 21.3828 17.7343 21.3828 17.2812Z"
+                                                                fill="#a271f2" />
+                                                        </g>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_2372_430">
+                                                            <rect width="28" height="28" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Server</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">
+                                                    ₼99.00/ay-dan başlayaraq</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="relative">
+                            <button data-dropdown-toggle="dropxidmt" onclick="drop(this)"
+                                class="flex items-center justify-start w-full py-2 px-3 text-gray-900 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#8e67c0] lg:p-0 lg:w-auto ">Xidmətlər
+                                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg></button>
+                            <div id="dropxidmt"
+                                class="z-10 hidden absolute lg:-left-32 max-h-96 top-10 lg:top-8 scrollbar overflow-y-scroll font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-auto ">
+                                <ul class="py-2 whitespace-normal w-auto xsm:w-[340px] lg:w-[400px] text-sm  lg:text-[1.1rem] text-gray-700 "
+                                    aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg width="28" height="28" viewBox="0 -2 1028 1028" fill="#A271F2"
+                                                    class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M91.448447 896c-50.086957 0-91.428571-40.546584-91.428571-91.428571V91.428571C0.019876 41.341615 40.56646 0 91.448447 0h671.006211c50.086957 0 91.428571 40.546584 91.428572 91.428571v337.093168l-3.180124-0.795031c-13.515528-3.975155-26.236025-5.565217-40.546584-5.565217h-0.795031l-0.795031-2.385093h-2.385094V91.428571c0-23.055901-20.670807-43.726708-43.726708-43.726708H91.448447c-23.055901 0-43.726708 20.670807-43.726708 43.726708v713.142858c0 23.055901 20.670807 43.726708 43.726708 43.726708h352.198758l0.795031 0.795031c8.745342 11.925466 3.975155 20.670807 0.795031 27.031056-3.180124 5.565217-4.770186 9.540373 0.795031 15.10559l4.770186 4.770186H91.448447z"
+                                                        fill="" />
+                                                    <path
+                                                        d="M143.125466 174.906832c-8.745342 0-15.900621-11.130435-15.900621-24.645962 0-13.515528 7.15528-24.645963 15.900621-24.645963h270.310559c8.745342 0 15.900621 11.130435 15.900621 24.645963 0 13.515528-7.15528 24.645963-15.900621 24.645962h-270.310559z"
+                                                        fill="" />
+                                                    <path
+                                                        d="M413.436025 128h-270.310559c-7.15528 0-13.515528 9.540373-13.515528 22.26087s6.360248 22.26087 13.515528 22.260869h270.310559c7.15528 0 13.515528-9.540373 13.515528-22.260869s-5.565217-22.26087-13.515528-22.26087zM139.945342 302.111801c-7.15528 0-12.720497-10.335404-12.720497-24.645962s5.565217-24.645963 12.720497-24.645963h193.987577c7.15528 0 12.720497 10.335404 12.720497 24.645963s-5.565217 24.645963-12.720497 24.645962H139.945342z"
+                                                        fill="" />
+                                                    <path
+                                                        d="M333.932919 255.204969H139.945342c-5.565217 0-9.540373 9.540373-9.540373 22.26087s3.975155 22.26087 9.540373 22.260869h193.987577c5.565217 0 9.540373-9.540373 9.540373-22.260869s-4.770186-22.26087-9.540373-22.26087zM734.628571 1024c-27.826087 0-58.037267-1.590062-96.993788-4.770186-56.447205-4.770186-108.124224-31.006211-158.211181-79.503106L253.634783 718.708075c-52.47205-50.881988-54.857143-117.664596-7.950311-168.546584 19.875776-20.670807 50.881988-33.391304 84.273292-33.391305 33.391304 0 63.602484 12.720497 82.68323 34.981367 0.795031 0.795031 2.385093 2.385093 5.565217 3.975155 0.795031 0.795031 2.385093 1.590062 3.180124 2.385093V451.57764v-52.47205c0-40.546584 0-81.888199 0.795031-122.434783 0.795031-60.42236 47.701863-106.534161 109.714286-106.534161h0.795031c59.627329 0 104.944099 43.726708 108.124224 103.354037 0.795031 13.515528 0.795031 27.826087 0 42.136646v18.285714h11.925466c41.341615 0 73.142857 14.310559 96.198757 44.52174 0.795031 1.590062 5.565217 3.180124 11.925466 3.180124 2.385093 0 4.770186 0 6.360249-0.795031 7.15528-0.795031 14.310559-1.590062 20.670807-1.590062 31.801242 0 59.627329 12.720497 83.478261 38.956521 3.975155 3.975155 12.720497 7.15528 20.670807 7.15528h3.180125c5.565217-0.795031 11.925466-1.590062 17.490683-1.590062 59.627329 0 107.329193 42.136646 108.124224 96.993789 2.385093 100.968944 3.975155 200.347826-7.15528 298.931677-13.515528 119.254658-77.118012 182.857143-201.142857 198.757764-23.055901 3.975155-49.291925 5.565217-77.913044 5.565217zM325.982609 562.086957c-16.695652 0-32.596273 6.360248-44.521739 17.490683-14.310559 14.310559-22.26087 31.006211-22.26087 49.291925 0 19.080745 8.745342 38.161491 24.645963 54.062112l30.21118 30.21118c65.987578 65.192547 134.360248 131.975155 202.732919 197.962733 33.391304 31.801242 71.552795 52.47205 113.689441 60.42236 32.596273 6.360248 65.192547 9.540373 96.993789 9.540373 28.621118 0 57.242236-2.385093 85.068323-7.950311 100.968944-18.285714 147.080745-66.782609 156.621118-160.596273 8.745342-89.838509 7.950311-182.062112 6.360248-271.10559v-14.310559c-0.795031-32.596273-23.850932-54.857143-56.447205-54.857143-8.745342 0-16.695652 1.590062-25.440993 4.770187V601.043478c0 11.130435 0 32.596273-22.26087 32.596274h-0.795031c-7.15528 0-12.720497-1.590062-15.900621-5.565218-6.360248-6.360248-7.15528-18.285714-7.15528-27.826087v-4.770186c0-36.571429 0.795031-73.937888 0-111.304348-0.795031-32.596273-23.850932-55.652174-55.652174-55.652174-7.950311 0-15.900621 1.590062-23.0559 3.975155v128.795031c0 11.130435-2.385093 19.875776-7.950311 25.440994-3.975155 3.975155-9.540373 6.360248-16.695652 6.360249h-0.795031c-21.465839-0.795031-21.465839-23.055901-21.465838-31.006211v-52.47205-66.782609c0-15.10559-6.360248-31.006211-18.285715-42.931677-11.130435-11.130435-26.236025-17.490683-41.341615-17.490683-6.360248 0-13.515528 0.795031-19.875776 3.180124V442.832298c0 27.031056 0 55.652174-1.590062 83.478261-0.795031 7.15528-7.15528 12.720497-13.515528 18.285714-2.385093 2.385093-5.565217 4.770186-7.950311 7.15528l-2.385093 2.385093-1.590062-3.975155c-1.590062-2.385093-3.975155-4.770186-6.360248-6.360249-4.770186-5.565217-10.335404-11.130435-13.515528-17.490683-2.385093-4.770186-1.590062-10.335404-1.590062-15.10559v-6.360249-69.167701c0-50.881988 0-103.354037-0.795032-155.031056 0-38.161491-24.645963-63.602484-60.42236-64.397516-38.956522 0-65.192547 27.826087-65.192546 68.372671v374.459627l-10.335404 6.360249-0.795031-1.590062c-7.15528-7.950311-15.10559-15.900621-22.26087-23.850932-16.695652-17.490683-34.186335-36.571429-51.677018-54.062112-15.900621-15.10559-35.776398-23.850932-56.447205-23.850931z"
+                                                        fill="" />
+                                                </svg>
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Sifarişi izlə</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">
+                                                    Sifarişlərinizi izləyin</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <?xml version="1.0" encoding="iso-8859-1"?>
+                                                <svg fill="#A271F2" height="28" width="28" version="1.1" id="Layer_1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 460 460"
+                                                    xml:space="preserve">
+                                                    <g id="XMLID_241_">
+                                                        <g>
+                                                            <path d="M369.635,0H90.365C73.595,0,60,13.595,60,30.365v399.27C60,446.405,73.595,460,90.365,460h279.27
+			c16.77,0,30.365-13.595,30.365-30.365V30.365C400,13.595,386.405,0,369.635,0z M108.204,343.61v-43.196
+			c0-3.451,2.797-6.248,6.248-6.248h43.196c3.451,0,6.248,2.797,6.248,6.248v43.196c0,3.451-2.797,6.248-6.248,6.248h-43.196
+			C111.001,349.858,108.204,347.06,108.204,343.61z M108.204,256.61v-43.196c0-3.451,2.797-6.248,6.248-6.248h43.196
+			c3.451,0,6.248,2.797,6.248,6.248v43.196c0,3.451-2.797,6.248-6.248,6.248h-43.196C111.001,262.858,108.204,260.06,108.204,256.61
+			z M308.891,421H151.109c-11.046,0-20-8.954-20-20c0-11.046,8.954-20,20-20h157.782c11.046,0,20,8.954,20,20
+			C328.891,412.046,319.937,421,308.891,421z M208.402,294.165h43.196c3.451,0,6.248,2.797,6.248,6.248v43.196
+			c0,3.451-2.797,6.248-6.248,6.248h-43.196c-3.451,0-6.248-2.797-6.248-6.248v-43.196
+			C202.154,296.963,204.951,294.165,208.402,294.165z M202.154,256.61v-43.196c0-3.451,2.797-6.248,6.248-6.248h43.196
+			c3.451,0,6.248,2.797,6.248,6.248v43.196c0,3.451-2.797,6.248-6.248,6.248h-43.196C204.951,262.858,202.154,260.06,202.154,256.61
+			z M345.548,349.858h-43.196c-3.451,0-6.248-2.797-6.248-6.248v-43.196c0-3.451,2.797-6.248,6.248-6.248h43.196
+			c3.451,0,6.248,2.797,6.248,6.248v43.196h0C351.796,347.061,348.999,349.858,345.548,349.858z M345.548,262.858h-43.196
+			c-3.451,0-6.248-2.797-6.248-6.248v-43.196c0-3.451,2.797-6.248,6.248-6.248h43.196c3.451,0,6.248,2.797,6.248,6.248v43.196h0
+			C351.796,260.061,348.999,262.858,345.548,262.858z M354,149.637c0,11.799-9.565,21.363-21.363,21.363H127.364
+			C115.565,171,106,161.435,106,149.637V62.363C106,50.565,115.565,41,127.364,41h205.273C344.435,41,354,50.565,354,62.363V149.637
+			z" />
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Sayt Kalkulyatoru</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Saytın
+                                                    qiymətini öyrənin</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/sgUxupnExZlBR6tNePlJ6L569Cp65wKFojRZyl0F.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>SEO Xidməti</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Axtarış
+                                                    Sistemi Optimizasiyası</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/T54KkNvzpw6VEXUE3YoGrhr1NhpHKmFmCFx9wIwh.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Mobil Tətbiqlərin Hazırlanması</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Mobil Tətbiq
+                                                    xidməti</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/IbI930H5VWeP3FFJXyJL2DtPWF1gy9ASREm90EBs.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Texniki Xidmət</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Texniki
+                                                    Xidmət</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <img alt="navbar-icon" fetchpriority="high" width="28" height="28"
+                                                    decoding="async" data-nimg="1" class="max-w-[28px]"
+                                                    src="https://api.websiteca.com/storage/MWCG5ptX87GTmLKVrxhewNDRblz5IxF0ZWRoGKWn.svg"
+                                                    style="color: transparent;" />
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Sosial Media Maketinq</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Sosial Media
+                                                    Maketinq</p>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="relative">
+                            <button data-dropdown-toggle="dropsirket" onclick="drop(this)"
+                                class="flex items-center justify-start w-full py-2 px-3 text-gray-900 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#8e67c0] lg:p-0 lg:w-auto ">Şirkət
+                                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg></button>
+                            <div id="dropsirket"
+                                class="z-10 hidden absolute lg:-left-32 max-h-96 top-10 lg:top-8 scrollbar overflow-y-scroll font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-auto ">
+                                <ul class="py-2 whitespace-normal w-auto xsm:w-[340px] lg:w-[400px] text-sm  lg:text-[1.1rem] text-gray-700 "
+                                    aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg width="28" height="24" viewBox="0 0 28 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="about-icon" clip-path="url(#clip0_1138_407)">
+                                                        <path id="Vector"
+                                                            d="M3.28316 3.98481C3.28316 3.54494 3.63974 3.18835 4.07962 3.18835H4.12869C4.56856 3.18835 4.92515 3.54494 4.92515 3.98481C4.92515 4.42469 4.56856 4.78127 4.12869 4.78127H4.07962C3.63974 4.78127 3.28316 4.42469 3.28316 3.98481ZM6.5672 3.98481C6.5672 3.54494 6.92378 3.18835 7.36366 3.18835H7.41262C7.85249 3.18835 8.20908 3.54494 8.20908 3.98481C8.20908 4.42469 7.85249 4.78127 7.41262 4.78127H7.36366C6.92378 4.78127 6.5672 4.42469 6.5672 3.98481ZM9.85102 3.98481C9.85102 3.54494 10.2076 3.18835 10.6475 3.18835H10.6964C11.1363 3.18835 11.4929 3.54494 11.4929 3.98481C11.4929 4.42469 11.1363 4.78127 10.6964 4.78127H10.6475C10.2076 4.78127 9.85102 4.42469 9.85102 3.98481Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector_2"
+                                                            d="M1.5 0C0.671572 0 0 0.671573 0 1.5V22.4975C0 23.3259 0.671573 23.9975 1.5 23.9975H26.5C27.3284 23.9975 28 23.3259 28 22.4975V1.5C28 0.671573 27.3284 0 26.5 0H1.5ZM26.3594 1.59292V6.37688H1.64062V1.59292H26.3594ZM1.64062 22.4046V7.96981H26.3594V22.4046H1.64062Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector_3"
+                                                            d="M10.9456 15.187C10.9456 14.7471 11.3022 14.3906 11.7421 14.3906H23.9204C24.3602 14.3906 24.7168 14.7471 24.7168 15.187C24.7168 15.6269 24.3602 15.9835 23.9204 15.9835H11.7421C11.3022 15.9835 10.9456 15.6269 10.9456 15.187ZM10.9456 11.9987C10.9456 11.5589 11.3022 11.2023 11.7421 11.2023H23.9204C24.3602 11.2023 24.7168 11.5589 24.7168 11.9987C24.7168 12.4386 24.3602 12.7952 23.9204 12.7952H11.7421C11.3022 12.7952 10.9456 12.4386 10.9456 11.9987ZM10.9456 18.3753C10.9456 17.9355 11.3022 17.5789 11.7421 17.5789H23.9204C24.3602 17.5789 24.7168 17.9355 24.7168 18.3753C24.7168 18.8152 24.3602 19.1718 23.9204 19.1718H11.7421C11.3022 19.1718 10.9456 18.8152 10.9456 18.3753ZM7.11364 15.3906C7.11364 14.8383 6.66592 14.3906 6.11364 14.3906H4.62693C4.18706 14.3906 3.83047 14.7471 3.83047 15.187C3.83047 15.6269 4.18706 15.9835 4.62693 15.9835H5.47301V17.5789H4.62694C4.18706 17.5789 3.83047 17.9355 3.83047 18.3753C3.83047 18.8152 4.18706 19.1718 4.62694 19.1718H7.95994C8.39981 19.1718 8.7564 18.8152 8.7564 18.3753C8.7564 17.9355 8.39981 17.5789 7.95994 17.5789H7.11364V15.3906ZM5.47236 11.9987C5.47236 11.5589 5.82895 11.2023 6.26882 11.2023H6.31784C6.75771 11.2023 7.1143 11.5589 7.1143 11.9987C7.1143 12.4386 6.75771 12.7952 6.31784 12.7952H6.26882C5.82895 12.7952 5.47236 12.4386 5.47236 11.9987Z"
+                                                            fill="#a271f2" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1138_407">
+                                                            <rect width="28" height="24" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Haqqımızda</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Bizim
+                                                    komanda üzvlərimiz</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg width="28" height="24" viewBox="0 0 28 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="blog-icon" clip-path="url(#clip0_1138_401)">
+                                                        <path id="Vector"
+                                                            d="M26.5 0C27.3284 0 28 0.671573 28 1.5V22.5C28 23.3284 27.3284 24 26.5 24C18.1667 23.9998 9.83339 23.9998 1.5001 24C0.671667 24 7.62939e-05 23.3284 7.62939e-05 22.5V1.5C7.62939e-05 0.671573 0.671649 0 1.50008 0H26.5ZM14.5242 12.2045C14.5242 11.7676 14.8784 11.4134 15.3153 11.4134H22.9113C23.3483 11.4134 23.7024 11.7676 23.7024 12.2045C23.7024 12.6414 23.3483 12.9956 22.9113 12.9956H15.3153C14.8784 12.9956 14.5242 12.6414 14.5242 12.2045ZM14.5242 16.026C14.5242 15.5891 14.8784 15.2349 15.3153 15.2349H22.9113C23.3483 15.2349 23.7024 15.5891 23.7024 16.026C23.7024 16.4629 23.3483 16.8171 22.9113 16.8171H15.3153C14.8784 16.8171 14.5242 16.4629 14.5242 16.026ZM4.36767 19.8475C4.36767 19.4106 4.72187 19.0564 5.15879 19.0564H22.9113C23.3483 19.0564 23.7024 19.4106 23.7024 19.8475C23.7024 20.2844 23.3483 20.6386 22.9113 20.6386H5.15879C4.72187 20.6386 4.36767 20.2844 4.36767 19.8475ZM14.5242 8.38302C14.5242 7.94609 14.8784 7.5919 15.3153 7.5919H22.9113C23.3483 7.5919 23.7024 7.94609 23.7024 8.38302C23.7024 8.81995 23.3483 9.17414 22.9113 9.17414H15.3153C14.8784 9.17414 14.5242 8.81995 14.5242 8.38302ZM10.3517 7.5919C11.1801 7.5919 11.8517 8.26347 11.8517 9.0919V15.3171C11.8517 16.1456 11.1801 16.8171 10.3517 16.8171H5.84591C5.01748 16.8171 4.34591 16.1456 4.34591 15.3171V9.0919C4.34591 8.26347 5.01748 7.5919 5.84591 7.5919H10.3517ZM10.3018 9.17414H5.8956V15.235H10.3018V9.17414ZM9.51083 2.90646C9.51083 3.37063 9.14227 3.74689 8.6876 3.74689C8.23294 3.74689 7.86438 3.37063 7.86438 2.90646C7.86438 2.4423 8.23294 2.06604 8.6876 2.06604C9.14227 2.06604 9.51083 2.4423 9.51083 2.90646ZM6.83702 2.90646C6.83702 3.37063 6.46846 3.74689 6.0138 3.74689C5.55913 3.74689 5.19058 3.37063 5.19058 2.90646C5.19058 2.4423 5.55913 2.06604 6.0138 2.06604C6.46846 2.06604 6.83702 2.4423 6.83702 2.90646ZM4.16306 2.90646C4.16306 3.37063 3.7945 3.74689 3.33983 3.74689C2.88517 3.74689 2.51661 3.37063 2.51661 2.90646C2.51661 2.4423 2.88517 2.06604 3.33983 2.06604C3.79434 2.06604 4.16306 2.4423 4.16306 2.90646ZM1.54993 4.23051H26.4501V1.58225H1.54993V4.23051ZM26.4501 5.81276H1.54993V22.4178H26.4501V5.81276Z"
+                                                            fill="#a271f2" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1138_401">
+                                                            <rect width="28" height="24" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Bloq</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Ən son
+                                                    xəbərlər və faydalı məlumatlar</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg width="28" height="28" viewBox="0 0 49 48" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clipPath="url(#clip0_1027_9)">
+                                                        <path fillRule="evenodd" clipRule="evenodd"
+                                                            d="M8.50166 -1.05246C9.19201 -1.05246 9.75166 -0.492816 9.75166 0.19754V3.67564H13.4379V0.19754C13.4379 -0.492816 13.9976 -1.05246 14.6879 -1.05246C15.3783 -1.05246 15.9379 -0.492816 15.9379 0.19754V3.67564H19.6243V0.19754C19.6243 -0.492816 20.1839 -1.05246 20.8743 -1.05246C21.5647 -1.05246 22.1243 -0.492816 22.1243 0.19754V3.67564H25.8106V0.19754C25.8106 -0.492816 26.3702 -1.05246 27.0606 -1.05246C27.7509 -1.05246 28.3106 -0.492816 28.3106 0.19754V3.67564H31.9969V0.19754C31.9969 -0.492816 32.5566 -1.05246 33.2469 -1.05246C33.9373 -1.05246 34.4969 -0.492816 34.4969 0.19754V3.67564H38.1832V0.19754C38.1832 -0.492816 38.7429 -1.05246 39.4332 -1.05246C40.1236 -1.05246 40.6832 -0.492816 40.6832 0.19754V3.67564H43.0312C43.7216 3.67564 44.2812 4.23528 44.2812 4.92564V43.0263C44.2812 43.7166 43.7216 44.2763 43.0312 44.2763H4.96911C4.27876 44.2763 3.71911 43.7166 3.71911 43.0263V4.92564C3.71911 4.23528 4.27876 3.67564 4.96911 3.67564H7.25166V0.19754C7.25166 -0.492816 7.8113 -1.05246 8.50166 -1.05246ZM6.21911 6.17564V41.7763H41.7812V6.17564H6.21911Z"
+                                                            fill="#a271f2" />
+                                                        <path fillRule="evenodd" clipRule="evenodd"
+                                                            d="M10.1326 11.3456C10.1326 10.6552 10.6923 10.0956 11.3826 10.0956H36.6179C37.3083 10.0956 37.8679 10.6552 37.8679 11.3456V30.8124C37.8679 31.5027 37.3083 32.0624 36.6179 32.0624H36.6163C34.1022 32.0624 32.0605 34.0962 32.0467 36.6132C32.043 37.3008 31.4845 37.8563 30.7968 37.8563H11.3826C10.6923 37.8563 10.1326 37.2967 10.1326 36.6063V11.3456ZM12.6326 12.5956V35.3563H29.6625C30.1912 32.466 32.4741 30.1883 35.3679 29.6723V12.5956H12.6326Z"
+                                                            fill="#a271f2" />
+                                                        <path fillRule="evenodd" clipRule="evenodd"
+                                                            d="M27.6698 17.6472C26.7203 17.6472 25.9485 18.418 25.9485 19.3715C25.9485 20.3249 26.7203 21.0957 27.6698 21.0957C28.6192 21.0957 29.391 20.3249 29.391 19.3715C29.391 18.418 28.6192 17.6472 27.6698 17.6472ZM23.4485 19.3715C23.4485 17.0397 25.3372 15.1472 27.6698 15.1472C30.0023 15.1472 31.891 17.0397 31.891 19.3715C31.891 21.7033 30.0023 23.5957 27.6698 23.5957C25.3372 23.5957 23.4485 21.7033 23.4485 19.3715Z"
+                                                            fill="#a271f2" />
+                                                        <path fillRule="evenodd" clipRule="evenodd"
+                                                            d="M19.3332 26.2964C18.3837 26.2964 17.6119 27.0672 17.6119 28.0207C17.6119 28.9741 18.3837 29.7449 19.3332 29.7449C20.2826 29.7449 21.0544 28.9741 21.0544 28.0207C21.0544 27.0672 20.2826 26.2964 19.3332 26.2964ZM15.1119 28.0207C15.1119 25.6889 17.0006 23.7964 19.3332 23.7964C21.6657 23.7964 23.5544 25.6889 23.5544 28.0207C23.5544 30.3525 21.6657 32.2449 19.3332 32.2449C17.0007 32.2449 15.1119 30.3525 15.1119 28.0207Z"
+                                                            fill="#a271f2" />
+                                                        <path fillRule="evenodd" clipRule="evenodd"
+                                                            d="M-1.05225 8.49453C-1.05225 7.80417 -0.492602 7.24453 0.197754 7.24453H4.92111C5.61147 7.24453 6.17111 7.80417 6.17111 8.49453C6.17111 9.18489 5.61147 9.74453 4.92111 9.74453H0.197754C-0.492602 9.74453 -1.05225 9.18489 -1.05225 8.49453ZM41.8293 8.49453C41.8293 7.80417 42.389 7.24453 43.0793 7.24453H47.8027C48.4931 7.24453 49.0527 7.80417 49.0527 8.49453C49.0527 9.18489 48.4931 9.74453 47.8027 9.74453H43.0793C42.389 9.74453 41.8293 9.18489 41.8293 8.49453ZM19.4073 10.0956C20.0977 10.0956 20.6573 10.6552 20.6573 11.3456V18.1215H24.6986C25.389 18.1215 25.9485 18.6811 25.9485 19.3715C25.9485 20.0618 25.389 20.6215 24.6986 20.6215H19.4073C18.717 20.6215 18.1573 20.0618 18.1573 19.3715V11.3456C18.1573 10.6552 18.717 10.0956 19.4073 10.0956ZM-1.05225 14.6871C-1.05225 13.9968 -0.492602 13.4371 0.197754 13.4371H4.92111C5.61147 13.4371 6.17111 13.9968 6.17111 14.6871C6.17111 15.3775 5.61147 15.9371 4.92111 15.9371H0.197754C-0.492602 15.9371 -1.05225 15.3775 -1.05225 14.6871ZM41.8293 14.6871C41.8293 13.9968 42.389 13.4371 43.0793 13.4371H47.8027C48.4931 13.4371 49.0527 13.9968 49.0527 14.6871C49.0527 15.3775 48.4931 15.9371 47.8027 15.9371H43.0793C42.389 15.9371 41.8293 15.3775 41.8293 14.6871ZM-1.05225 20.8797C-1.05225 20.1894 -0.492602 19.6297 0.197754 19.6297H4.92111C5.61147 19.6297 6.17111 20.1894 6.17111 20.8797C6.17111 21.5701 5.61147 22.1297 4.92111 22.1297H0.197754C-0.492602 22.1297 -1.05225 21.5701 -1.05225 20.8797ZM41.8293 20.8797C41.8293 20.1894 42.389 19.6297 43.0793 19.6297H47.8027C48.4931 19.6297 49.0527 20.1894 49.0527 20.8797C49.0527 21.5701 48.4931 22.1297 47.8027 22.1297H43.0793C42.389 22.1297 41.8293 21.5701 41.8293 20.8797ZM-1.05225 27.0722C-1.05225 26.3818 -0.492602 25.8222 0.197754 25.8222H4.92111C5.61147 25.8222 6.17111 26.3818 6.17111 27.0722C6.17111 27.7626 5.61147 28.3222 4.92111 28.3222H0.197754C-0.492602 28.3222 -1.05225 27.7626 -1.05225 27.0722ZM41.8293 27.0722C41.8293 26.3818 42.389 25.8222 43.0793 25.8222H47.8027C48.4931 25.8222 49.0527 26.3818 49.0527 27.0722C49.0527 27.7626 48.4931 28.3222 47.8027 28.3222H43.0793C42.389 28.3222 41.8293 27.7626 41.8293 27.0722ZM19.3332 29.7449C20.0235 29.7449 20.5832 30.3045 20.5832 30.9949V36.6057C20.5832 37.2961 20.0235 37.8557 19.3332 37.8557C18.6428 37.8557 18.0832 37.2961 18.0832 36.6057V30.9949C18.0832 30.3045 18.6428 29.7449 19.3332 29.7449ZM-1.05225 33.2648C-1.05225 32.5744 -0.492602 32.0148 0.197754 32.0148H4.92111C5.61147 32.0148 6.17111 32.5744 6.17111 33.2648C6.17111 33.9552 5.61147 34.5148 4.92111 34.5148H0.197754C-0.492602 34.5148 -1.05225 33.9552 -1.05225 33.2648ZM41.8293 33.2648C41.8293 32.5744 42.389 32.0148 43.0793 32.0148H47.8027C48.4931 32.0148 49.0527 32.5744 49.0527 33.2648C49.0527 33.9552 48.4931 34.5148 47.8027 34.5148H43.0793C42.389 34.5148 41.8293 33.9552 41.8293 33.2648ZM-1.05225 39.4574C-1.05225 38.767 -0.492602 38.2074 0.197754 38.2074H4.92111C5.61147 38.2074 6.17111 38.767 6.17111 39.4574C6.17111 40.1478 5.61147 40.7074 4.92111 40.7074H0.197754C-0.492602 40.7074 -1.05225 40.1478 -1.05225 39.4574ZM41.8293 39.4574C41.8293 38.767 42.389 38.2074 43.0793 38.2074H47.8027C48.4931 38.2074 49.0527 38.767 49.0527 39.4574C49.0527 40.1478 48.4931 40.7074 47.8027 40.7074H43.0793C42.389 40.7074 41.8293 40.1478 41.8293 39.4574ZM8.53445 41.8244C9.2248 41.8244 9.78445 42.384 9.78445 43.0744V47.8025C9.78445 48.4928 9.2248 49.0525 8.53445 49.0525C7.84409 49.0525 7.28445 48.4928 7.28445 47.8025V43.0744C7.28445 42.384 7.84409 41.8244 8.53445 41.8244ZM14.7207 41.8244C15.4111 41.8244 15.9707 42.384 15.9707 43.0744V47.8025C15.9707 48.4928 15.4111 49.0525 14.7207 49.0525C14.0304 49.0525 13.4707 48.4928 13.4707 47.8025V43.0744C13.4707 42.384 14.0304 41.8244 14.7207 41.8244ZM20.9071 41.8244C21.5974 41.8244 22.1571 42.384 22.1571 43.0744V47.8025C22.1571 48.4928 21.5974 49.0525 20.9071 49.0525C20.2167 49.0525 19.6571 48.4928 19.6571 47.8025V43.0744C19.6571 42.384 20.2167 41.8244 20.9071 41.8244ZM27.0934 41.8244C27.7837 41.8244 28.3434 42.384 28.3434 43.0744V47.8025C28.3434 48.4928 27.7837 49.0525 27.0934 49.0525C26.403 49.0525 25.8434 48.4928 25.8434 47.8025V43.0744C25.8434 42.384 26.403 41.8244 27.0934 41.8244ZM33.2797 41.8244C33.9701 41.8244 34.5297 42.384 34.5297 43.0744V47.8025C34.5297 48.4928 33.9701 49.0525 33.2797 49.0525C32.5894 49.0525 32.0297 48.4928 32.0297 47.8025V43.0744C32.0297 42.384 32.5894 41.8244 33.2797 41.8244ZM39.466 41.8244C40.1564 41.8244 40.716 42.384 40.716 43.0744V47.8025C40.716 48.4928 40.1564 49.0525 39.466 49.0525C38.7757 49.0525 38.216 48.4928 38.216 47.8025V43.0744C38.216 42.384 38.7757 41.8244 39.466 41.8244Z"
+                                                            fill="#a271f2" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1027_9">
+                                                            <rect width="48" height="48" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>StartUplar</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Startupları
+                                                    idarə edən komandamıza qoşulun</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg width="28" height="24" viewBox="0 0 28 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_1138_395)">
+                                                        <path
+                                                            d="M19.4868 5.37501V1.5C19.4868 0.671573 18.8152 0 17.9868 0H10.0127C9.18423 0 8.51266 0.671573 8.51266 1.5V5.37501H1.5C0.671574 5.37501 0 6.04659 0 6.87501V22.5C0 23.3284 0.671573 24 1.5 24H26.5C27.3284 24 28 23.3284 28 22.5V6.87501C28 6.04659 27.3284 5.37501 26.5 5.37501H19.4868ZM10.1538 1.67969H17.8467V5.37501H10.1538V1.67969ZM26.3594 22.3203H1.64062V15.4157H11.7212V16.499C11.7212 17.3274 12.3927 17.999 13.2212 17.999H14.7783C15.6067 17.999 16.2783 17.3274 16.2783 16.499V15.4157H26.3588L26.3594 22.3203ZM13.3618 16.3193V12.624H14.6377V16.3193H13.3618ZM26.3594 13.736H16.2788V12.4443C16.2788 11.6159 15.6073 10.9443 14.7788 10.9443H13.2217C12.3933 10.9443 11.7217 11.6159 11.7217 12.4443V13.736H1.64062V7.05471H26.3594V13.736Z"
+                                                            fill="#a271f2" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1138_395">
+                                                            <rect width="28" height="24" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Portofilo</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">
+                                                    Hazırladığımız hər iş bizim üçün dəyərlidir</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="career-icon" clip-path="url(#clip0_1138_382)">
+                                                        <path id="Vector (Stroke)" fill-rule="evenodd"
+                                                            clip-rule="evenodd"
+                                                            d="M-0.000762939 1.5C-0.000762939 0.671573 0.670809 0 1.49924 0H21.5555C22.3839 0 23.0555 0.671573 23.0555 1.5V22.5586H7.81955V24.3587L7.81581 24.3978L6.99924 24.3195C7.81581 24.3978 7.81581 24.3978 7.81581 24.3978L7.81565 24.3994L7.81545 24.4014L7.81497 24.4061C7.81461 24.4096 7.81416 24.4139 7.81361 24.4188C7.81252 24.4286 7.81104 24.4411 7.80909 24.4562C7.8052 24.4865 7.79945 24.5271 7.79121 24.5768C7.77478 24.6757 7.74826 24.8117 7.7065 24.9725C7.6238 25.2911 7.47701 25.7243 7.21826 26.165C6.68245 27.0775 5.66774 28 3.91432 28C2.14655 28 1.13148 27.0359 0.600075 26.1032C0.342315 25.6507 0.195569 25.2062 0.112699 24.8796C0.0708538 24.7146 0.0441925 24.5754 0.0276638 24.4743C0.0193807 24.4236 0.0135871 24.3821 0.00967997 24.3514C0.00772503 24.3361 0.00623822 24.3234 0.00514539 24.3135C0.00459881 24.3086 0.00415039 24.3044 0.00379095 24.3009L0.00331713 24.2963L0.00312796 24.2943C0.00312796 24.2943 0.0029695 24.2927 0.81955 24.2145L0.00296952 24.2927L-0.000762939 24.2537V1.5ZM1.63986 24.1642C1.64156 24.1763 1.64384 24.1915 1.64681 24.2096C1.65678 24.2707 1.67425 24.363 1.70294 24.4761C1.76113 24.7054 1.86102 25.0022 2.02559 25.291C2.33883 25.8409 2.87114 26.3594 3.91432 26.3594C4.97183 26.3594 5.49958 25.8518 5.8035 25.3342C5.96461 25.0599 6.062 24.778 6.11851 24.5603C6.14636 24.453 6.1632 24.3655 6.17273 24.3081C6.17533 24.2925 6.17737 24.2792 6.17893 24.2684V20.918H21.4149V1.64062H1.63986V24.1642Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector (Stroke)_2" fill-rule="evenodd"
+                                                            clip-rule="evenodd"
+                                                            d="M6.17914 20.918H28V24.2216C28 26.3082 26.3082 28 24.2216 28H3.91454V26.3594C4.97205 26.3594 5.4998 25.8518 5.80372 25.3342C5.96483 25.0599 6.06222 24.778 6.11873 24.5603C6.14658 24.453 6.16342 24.3655 6.17295 24.3081C6.17555 24.2925 6.17759 24.2792 6.17914 24.2684V20.918ZM6.99946 24.3195C7.81603 24.3978 7.81595 24.3986 7.81595 24.3986L7.81567 24.4014L7.81519 24.4061C7.81483 24.4096 7.81438 24.4139 7.81383 24.4188C7.81274 24.4286 7.81126 24.4411 7.80931 24.4562C7.80542 24.4865 7.79967 24.5272 7.79143 24.5768C7.775 24.6757 7.74848 24.8117 7.70672 24.9725C7.62402 25.2911 7.47723 25.7243 7.21848 26.165C7.18039 26.2298 7.13989 26.2947 7.09687 26.3594H24.2216C25.4021 26.3594 26.3594 25.4021 26.3594 24.2216V22.5586H7.81977V24.3587L7.81595 24.3986L6.99946 24.3195Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector (Stroke)_3" fill-rule="evenodd"
+                                                            clip-rule="evenodd"
+                                                            d="M18.9798 7.00769C18.9798 7.46074 18.6126 7.828 18.1595 7.828H10.1254C9.67235 7.828 9.30508 7.46074 9.30508 7.00769C9.30508 6.55464 9.67235 6.18738 10.1254 6.18738H18.1595C18.6126 6.18738 18.9798 6.55464 18.9798 7.00769Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector (Stroke)_4" fill-rule="evenodd"
+                                                            clip-rule="evenodd"
+                                                            d="M18.9798 11.6249C18.9798 12.0779 18.6126 12.4452 18.1595 12.4452H10.1254C9.67235 12.4452 9.30508 12.0779 9.30508 11.6249C9.30508 11.1718 9.67235 10.8046 10.1254 10.8046H18.1595C18.6126 10.8046 18.9798 11.1718 18.9798 11.6249Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector (Stroke)_5" fill-rule="evenodd"
+                                                            clip-rule="evenodd"
+                                                            d="M18.9798 16.2422C18.9798 16.6952 18.6126 17.0625 18.1595 17.0625H10.1254C9.67235 17.0625 9.30508 16.6952 9.30508 16.2422C9.30508 15.7891 9.67235 15.4219 10.1254 15.4219H18.1595C18.6126 15.4219 18.9798 15.7891 18.9798 16.2422Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector (Stroke)_6" fill-rule="evenodd"
+                                                            clip-rule="evenodd"
+                                                            d="M7.80937 5.81371C7.98851 6.02385 7.96338 6.33944 7.75323 6.51858L5.66375 8.29981C5.45233 8.48003 5.13454 8.45336 4.95612 8.24042L3.93937 7.02691C3.76202 6.81524 3.78985 6.49988 4.00151 6.32253L4.49256 5.91111C4.70423 5.73376 5.01958 5.76158 5.19693 5.97325L5.47487 6.30497L6.68889 5.27005C6.89904 5.0909 7.21462 5.11604 7.39377 5.32618L7.80937 5.81371Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector (Stroke)_7" fill-rule="evenodd"
+                                                            clip-rule="evenodd"
+                                                            d="M7.80937 10.9204C7.98851 11.1305 7.96338 11.4461 7.75323 11.6253L5.66375 13.4065C5.45233 13.5867 5.13454 13.56 4.95612 13.3471L3.93937 12.1336C3.76202 11.9219 3.78985 11.6066 4.00151 11.4292L4.49256 11.0178C4.70423 10.8404 5.01958 10.8683 5.19693 11.0799L5.47487 11.4117L6.68889 10.3767C6.89904 10.1976 7.21462 10.2227 7.39377 10.4329L7.80937 10.9204Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector (Stroke)_8" fill-rule="evenodd"
+                                                            clip-rule="evenodd"
+                                                            d="M7.80937 16.0277C7.98851 16.2378 7.96338 16.5534 7.75323 16.7326L5.66375 18.5138C5.45233 18.694 5.13454 18.6673 4.95612 18.4544L3.93937 17.2409C3.76202 17.0292 3.78985 16.7139 4.00151 16.5365L4.49256 16.1251C4.70423 15.9477 5.01958 15.9756 5.19693 16.1872L5.47487 16.519L6.68889 15.484C6.89904 15.3049 7.21462 15.33 7.39377 15.5402L7.80937 16.0277Z"
+                                                            fill="#a271f2" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1138_382">
+                                                            <rect width="28" height="28" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Karyera</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Hazırki
+                                                    vakansialarımız</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg className="w-16 h-16" width="28" height="28" viewBox="0 0 64 63"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M0.53633 57.1391C0.538652 58.3029 1.00214 59.4184 1.82527 60.2411C2.6484 61.0638 3.76405 61.5267 4.92784 61.5285C8.85628 59.5708 52.3522 66.1778 51.0156 57.1413C50.8642 47.3828 50.9718 38.5756 50.9718 38.5756C50.9718 38.5756 56.3607 33.2031 62.8975 27.2128C67.5677 21.6735 56.2115 11.4859 51.0156 20.473C49.8645 16.5599 54.2999 -0.31479 46.6263 0.0791509H4.92784C-4.0527 -2.39533 2.3568 53.9481 0.53633 57.1391ZM57.1508 29.853L40.3288 46.6772C39.7238 45.6194 39.03 44.6151 38.2548 43.6749C44.5688 38.7666 50.4593 32.2002 56.2203 26.5566C56.7916 27.5483 57.1433 28.6511 57.2518 29.7904C57.2177 29.808 57.1881 29.8387 57.153 29.853H57.1508ZM31.7038 45.446L32.4719 42.1189C35.2029 43.3962 37.4047 45.5833 38.7003 48.3056L35.3469 49.0858C34.5223 47.537 33.2536 46.2688 31.7038 45.446ZM59.8469 27.1755C59.7183 27.3659 59.5557 27.531 59.3674 27.6627C59.3378 27.5497 59.2961 27.4399 59.261 27.328C60.0228 25.8552 60.7063 24.3432 61.3086 22.7982C62.1195 24.2621 62.0657 25.7994 59.8469 27.1755ZM54.6138 22.0422C54.9375 21.4858 55.3797 20.2865 54.7038 19.8618C55.7572 18.9302 57.0674 18.2696 58.2405 19.4536C59.0732 20.1412 59.8476 20.8966 60.5558 21.7119C59.7728 22.9579 59.0851 24.2612 58.4983 25.6107C58.2962 25.2707 58.0688 24.9465 57.818 24.6407C60.3506 20.3227 58.9921 17.6781 56.9544 23.7441C56.6989 23.5149 56.4276 23.3041 56.1424 23.1132C56.873 22.0336 57.2821 20.7687 57.322 19.4657C57.319 19.3654 57.2838 19.2688 57.2216 19.1901C57.1595 19.1114 57.0737 19.0547 56.9769 19.0285C56.8801 19.0023 56.7774 19.008 56.684 19.0446C56.5907 19.0812 56.5116 19.1469 56.4584 19.2319C55.8238 20.2366 55.3433 21.3307 55.033 22.4778C54.8486 22.3905 54.6604 22.3114 54.4689 22.2408C54.523 22.179 54.5715 22.1126 54.6138 22.0422ZM53.0841 21.5616C53.2529 21.3752 53.4425 21.2088 53.6492 21.0656L53.5889 21.0041C53.7403 20.8307 53.9093 20.6442 54.0893 20.4554C54.0838 20.4554 54.0344 20.8241 54.0552 20.6464C53.9817 21.1095 53.9071 21.5758 53.8446 22.04C53.4812 21.9505 53.11 21.8968 52.7363 21.8798C52.8515 21.7722 52.9667 21.6647 53.0841 21.5616ZM51.1561 23.438C52.3258 23.7233 53.4524 24.1628 54.5062 24.7449C48.9099 30.7473 42.6057 36.0935 37.163 42.2133L37.1224 42.1255L36.8667 42.379C36.025 41.644 35.105 41.0037 34.1234 40.4696L51.1561 23.438ZM2.73428 4.46737C1.23094 -0.554008 45.179 3.53135 46.6274 2.27052C47.2094 2.27197 47.7671 2.50396 48.1785 2.91569C48.5898 3.32743 48.8212 3.88537 48.8221 4.46737V22.6677C47.6984 23.9 31.0805 40.1174 30.4056 41.3179C26.0679 55.7368 28.2878 54.0721 40.7863 49.3229L48.8221 41.2871C47.8784 43.2546 51.0453 59.832 46.6274 59.3338H4.92894C-0.367869 60.9699 4.17288 5.85329 2.73428 4.46737Z"
+                                                        fill="#a271f2" />
+                                                    <path
+                                                        d="M9.31723 56.0418C12.1933 55.4855 21.5612 57.9808 21.3878 52.7498C20.8315 49.8738 23.3268 40.5059 18.0959 40.6792C15.2198 41.2356 5.85187 38.7403 6.02525 43.9712C6.58159 46.8473 4.08627 56.2163 9.31723 56.0418ZM8.2199 43.9712C7.90387 41.7711 17.1576 43.3062 18.0959 42.8739C20.296 42.5579 18.7608 51.8116 19.1932 52.7498C19.5092 54.95 10.2554 53.4148 9.31723 53.8472C7.11709 54.1632 8.65225 44.9094 8.2199 43.9712ZM10.352 18.8479C13.4959 18.8193 16.6858 18.8841 19.8022 18.6526C20.5264 18.4188 20.6691 17.7045 20.702 17.0373C20.7722 15.8686 20.8238 14.6956 20.781 13.5258C22.7485 11.0206 25.6641 8.50007 27.3398 6.24177C27.4103 6.1132 27.4419 5.96687 27.4307 5.82065C27.4194 5.67442 27.3659 5.53463 27.2765 5.41836C27.1871 5.30209 27.0658 5.21437 26.9274 5.16592C26.7889 5.11747 26.6394 5.11039 26.497 5.14554C24.1114 6.14191 22.5543 8.54067 20.7251 10.2843C20.5714 8.8161 21.344 6.56438 19.4917 5.93561C17.7924 5.7005 16.0679 5.71418 14.3726 5.97621C12.9395 6.16276 11.1289 6.78385 9.75507 6.07717C9.43904 5.96853 8.95073 5.55923 8.48875 6.16495C7.31241 9.08275 8.1815 12.4351 8.20564 15.5076C8.30879 17.2118 8.018 19.0202 10.352 18.8479ZM13.5156 8.2005C15.2332 7.81017 16.9897 7.61726 18.751 7.6255C19.0516 7.64086 19.0396 7.61453 19.0626 7.89873C19.1175 9.32965 18.9474 10.7628 18.9013 12.1926C18.391 12.7028 17.8797 13.212 17.3453 13.6959C16.1525 12.5328 15.4052 10.7682 13.9633 9.88929C13.8378 9.81941 13.6963 9.78319 13.5526 9.78416C13.4089 9.78513 13.268 9.82326 13.1434 9.89483C13.0188 9.9664 12.9148 10.069 12.8416 10.1926C12.7684 10.3162 12.7284 10.4567 12.7255 10.6004C12.9318 12.5031 14.5043 13.9911 15.5676 15.4879C15.7133 15.7759 15.9299 16.0222 16.197 16.2034C16.4642 16.3847 16.7731 16.4949 17.0946 16.5238C17.4161 16.5527 17.7397 16.4992 18.0349 16.3685C18.33 16.2377 18.587 16.034 18.7817 15.7765C18.7817 16.064 18.7872 16.5929 18.7894 16.8826C16.0076 16.6818 13.2369 16.7597 10.4497 16.7136C10.2236 13.9209 9.85273 11.1315 9.78031 8.32998C11.0214 8.53946 12.292 8.49542 13.5156 8.2005ZM16.9601 14.0405C16.8284 14.1612 16.812 14.1678 16.9228 14.0405H16.9601ZM30.6636 10.1208C33.4541 10.2064 36.2369 10.1889 39.0241 10.0089C40.0231 10.1117 41.0261 9.85615 41.8541 9.28795C42.6025 8.40241 41.2978 7.70451 40.489 7.72645C37.1262 7.7591 33.7767 8.15534 30.499 8.90828C29.8011 9.05971 29.9843 10.1022 30.6636 10.1208ZM28.9144 14.4641C32.9537 15.0753 37.0401 14.6078 41.1057 14.4125C42.3018 14.339 44.209 14.5683 45.0978 13.6411C45.1936 13.5408 45.2658 13.4204 45.309 13.2887C45.3523 13.1569 45.3655 13.0172 45.3477 12.8796C45.3299 12.7421 45.2816 12.6103 45.2063 12.4939C45.131 12.3775 45.0305 12.2794 44.9124 12.2068C44.3079 11.8741 43.6001 11.782 42.9306 11.949C40.9027 12.1414 38.8727 12.3133 36.8404 12.4647C34.1289 12.5548 31.4301 12.8779 28.774 13.4304C28.1496 13.5258 28.3625 14.4191 28.9144 14.4641ZM24.0247 24.0646C23.02 25.0867 22.0684 26.1599 21.1739 27.2798C21.491 21.3794 19.0593 23.4314 14.9169 23.5971C13.1784 23.722 11.4343 23.7513 9.69252 23.6849C9.53807 23.6762 9.38365 23.7024 9.24069 23.7615C9.09772 23.8205 8.96988 23.911 8.86661 24.0262C8.76334 24.1413 8.6873 24.2783 8.64412 24.4268C8.60094 24.5753 8.59171 24.7317 8.61714 24.8843C8.37902 24.7021 7.94667 24.7877 7.99056 25.1575C8.23522 28.062 8.23008 30.9821 7.9752 33.8857C8.10907 35.5536 10.1271 35.3012 11.333 35.3835C12.8605 35.4878 14.3869 35.5832 15.9177 35.6502C21.0202 35.9717 21.39 36.1506 21.198 30.7934C22.9385 28.5768 24.8807 26.5263 26.9996 24.6681C27.7183 24.0404 28.8859 23.438 28.8519 22.3725C28.8482 22.1314 28.7673 21.8979 28.6212 21.7062C28.475 21.5144 28.2713 21.3745 28.0399 21.307C27.0314 21.0766 26.4378 21.7843 25.753 22.4065C25.1619 22.9435 24.5858 23.4969 24.0247 24.0646ZM18.9748 29.8694L18.9737 30.2777C18.041 31.8315 17.466 31.0535 16.5815 30.0505L14.6513 28.139C14.0336 27.5267 13.2193 28.4188 13.7241 29.0662C15.1506 30.5004 16.4488 34.036 18.943 32.9738C18.9196 33.1627 18.9218 33.3539 18.9496 33.5422C15.8957 33.5082 12.8781 33.3677 9.83078 33.3502L9.83737 33.2448C10.0843 30.6599 9.7687 28.0522 8.91232 25.6008C9.01122 25.7096 9.13165 25.7965 9.26596 25.8562C9.40028 25.9159 9.54554 25.947 9.69252 25.9476C12.7969 26.0136 15.901 25.8036 18.9682 25.3199C18.9924 26.8364 18.9759 28.3529 18.9748 29.8694ZM40.0655 23.111C36.7845 22.7906 33.3004 24.1425 30.1061 24.8887C29.3797 25.0928 29.4883 26.3295 30.2905 26.2527C31.8926 26.0968 33.4925 25.9619 35.0891 25.7578C36.6649 25.6041 38.2242 25.3057 39.7911 25.1301C40.0367 25.1247 40.2723 25.0319 40.4556 24.8683C40.6388 24.7047 40.7576 24.4811 40.7907 24.2377C40.8238 23.9943 40.7689 23.7471 40.636 23.5406C40.503 23.334 40.3007 23.1817 40.0655 23.111ZM36.9556 27.2359C34.6194 27.6386 32.281 28.0172 29.9448 28.4166C29.8042 28.4597 29.6835 28.5513 29.6042 28.6752C29.525 28.799 29.4923 28.9471 29.5121 29.0928C29.5319 29.2385 29.6028 29.3724 29.7122 29.4707C29.8216 29.5689 29.9624 29.6251 30.1094 29.6291C31.6599 29.7652 39.6331 30.3621 39.3259 28.0424C39.1832 26.9824 37.715 27.1097 36.9556 27.2359Z"
+                                                        fill="#a271f2" />
+                                                </svg>
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Freelance</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">qeydiyyatdan
+                                                    keçərək freelance işləyə bilərsiz</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center h-auto xsm:h-20 px-4 hover:bg-gray-100 ">
+                                            <div class="p-4 rounded-lg mr-2 bg-[#dbeafe] hidden lg:block">
+                                                <svg width="28" height="28" viewBox="0 0 28 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="contact-icon" clip-path="url(#clip0_1138_373)">
+                                                        <path id="Vector"
+                                                            d="M4.93102 6.73072C4.93102 6.2747 5.30069 5.90503 5.7567 5.90503H7.92432C8.38033 5.90503 8.75001 6.2747 8.75001 6.73072C8.75001 7.18673 8.38033 7.55641 7.92432 7.55641H5.7567C5.30069 7.55641 4.93102 7.18673 4.93102 6.73072Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector_2"
+                                                            d="M16.8073 4.1435V1.53345C16.8073 0.70502 16.1357 0.0334473 15.3073 0.0334473H1.5C0.671574 0.0334473 0 0.70502 0 1.53345V15.0655C0 15.894 0.671573 16.5655 1.5 16.5655H3.26304V19.0166C3.26304 19.3956 3.66821 19.6368 4.00137 19.4561L9.33237 16.5655H11.1927V19.1756C11.1927 20.0041 11.8643 20.6756 12.6927 20.6756H18.6676L23.9986 23.5662C24.3318 23.7469 24.737 23.5057 24.737 23.1267V20.6756H26.5C27.3284 20.6756 28 20.0041 28 19.1756V5.6435C28 4.81507 27.3284 4.1435 26.5 4.1435H16.8073ZM26.3594 19.0242H23.5963C23.3202 19.0242 23.0963 19.2481 23.0963 19.5242V21.2012L19.0814 19.0242H12.8334V5.79488H26.3594V19.0242ZM4.90366 17.0911V15.4141C4.90366 15.138 4.67981 14.9141 4.40366 14.9141H1.64062V1.68482H15.1666V4.1435H12.6927C11.8643 4.1435 11.1927 4.81507 11.1927 5.6435V9.42791H5.7567C5.30068 9.42791 4.93101 9.79758 4.93101 10.2536C4.93101 10.7096 5.30068 11.0793 5.7567 11.0793H11.1927V14.9141H8.91855L4.90366 17.0911Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector_3"
+                                                            d="M18.776 11.8146C18.776 11.3615 19.1433 10.9943 19.5963 10.9943C20.0494 10.9943 20.4167 11.3615 20.4167 11.8146V15.3049C20.4167 15.7579 20.0494 16.1252 19.5963 16.1252C19.1433 16.1252 18.776 15.7579 18.776 15.3049V11.8146Z"
+                                                            fill="#a271f2" />
+                                                        <path id="Vector_4"
+                                                            d="M19.5963 9.79493C20.0494 9.79493 20.4167 9.42526 20.4167 8.96924C20.4167 8.51323 20.0494 8.14355 19.5963 8.14355C19.1433 8.14355 18.776 8.51323 18.776 8.96924C18.776 9.42526 19.1433 9.79493 19.5963 9.79493Z"
+                                                            fill="#a271f2" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1138_373">
+                                                            <rect width="28" height="28" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h3>Əlaqə forması</h3>
+                                                <p class="text-slate-500 lg:text-sm text-xs font-semibold ">Əlaqə
+                                                    saxlayın</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <div
+                            class="flex lg:hidden items-center my-4 lg:order-2 space-x-1 lg:space-x-0 rtl:space-x-reverse">
+                            <div class="relative">
+                                <button type="button" data-dropdown-toggle="currency2-dropdown-menu"
+                                    onclick="drop(this)"
+                                    class="inline-flex items-center font-medium justify-center px-4 py-2 text-xl rounded-lg cursor-pointer group text-[#300b60]">
+                                    ₼ <svg class="w-2.5 h-2.5 ms-2.5 text-gray-400 group-hover:text-[#300b60]"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 4 4 4-4" />
+                                    </svg>
+                                </button>
+                                <div class="z-50 hidden absolute top-6 left-3 my-4 list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
+                                    id="currency2-dropdown-menu">
+                                    <ul class="py-2 font-medium text-lg" role="none">
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-[#a271f259]"
+                                                role="menuitem">
+                                                <div class="inline-flex items-center">
+                                                    $
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-[#a271f259] "
+                                                role="menuitem">
+                                                <div class="inline-flex items-center">
+                                                    ₼
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <button type="button" data-dropdown-toggle="language2-dropdown-menu"
+                                    onclick="drop(this)"
+                                    class="inline-flex items-center font-medium justify-center group px-4 py-2 text-xl  rounded-lg cursor-pointer">
+                                    <img src="images/azerbaijan.png" class="h-6" alt="azicon"> <svg
+                                        class="w-2.5 h-2.5 ms-2.5 text-gray-400 group-hover:text-[#300b60]"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 4 4 4-4" />
+                                    </svg>
+                                </button>
+                                <div class="z-50 hidden absolute top-6 left-3 my-4 list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
+                                    id="language2-dropdown-menu">
+                                    <ul class="py-2 font-medium text-lg " role="none">
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-[#a271f259]"
+                                                role="menuitem">
+                                                <div class="inline-flex items-center">
+                                                    <img src="images/united-states.png" class="h-6" alt="azicon" />
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-[#a271f259] "
+                                                role="menuitem">
+                                                <div class="inline-flex items-center">
+                                                    <img src="images/azerbaijan.png" class="h-6" alt="azicon" />
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button
+                            class="bg-gradient text-white text-xl lg:hidden h-12 w-full border mb-4 rounded-lg">Qiymət
+                            Təklifi Al</button>
+                        <button
+                            class="bg-white text-[#a271f2] lg:hidden text-xl h-12 w-full border border-[#a271f2] rounded-lg">Daxil
+                            olun</button>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div
+            class="bg-gray-100 pb-12 pt-6 px-4 flex flex-wrap md:flex-nowrap md:w-4/5 w-full mx-auto gap-4 justify-center">
+            <div class="w-full sm:2/3 lg:w-2/3">
+                <h1 class="bg-white text-3xl sm:text-4xl font-bold pt-4 px-4">Qiymət təklifi al</h1>
+                <div class="bg-white px-4">
+                    <h3 class="pt-11 pb-3 text-lg font-medium text-[#212529]">Statik səhifələr</h3>
+                    <div class="bg-gray-100 pt-4 rounded-lg">
+                        <div class="px-3">
+                            <p class="py-4">Neçə statik səhifə olacag?</p>
+                            <div class="flex items-center">
+                                <span
+                                    class="text-white bg-[#a271f2] flex justify-center items-center h-8 w-8 rounded-lg">1</span>
+                                <input id="sliderRange" type="range" min="1" max="20" step="1" value="4"
+                                    class="range-slider mx-1 rounded-lg w-full appearance-none h-2 bg-gray-200 " />
+                                <span
+                                    class="text-white bg-[#a271f2] flex justify-center items-center h-8 w-8 rounded-lg">20</span>
+                            </div>
+                            <p class=" py-4">Dizayn mürəkkəbliyi</p>
+                            <div class="flex items-center flex-col">
+                                <div class="flex w-full justify-between mb-8 text-sm">
+                                    <p>Sadə</p>
+                                    <p>Orta</p>
+                                    <p>Xüsusi</p>
+                                </div>
+                                <input id="seviyyeRange" type="range" min="1" max="3" step="1" value="1"
+                                    class="range-slider mx-1 w-full rounded-lg appearance-none h-2 bg-gray-200 " />
+                            </div>
+                        </div>
+                        <div class="bg-[#dee7f1] rounded-b-lg mt-4 flex items-center justify-between p-4">
+                            <p>Xərc :</p>
+                            <h2 class="text-2xl text-[#a271f2] font-semibold"><span id="sehifeShow"></span> səhifə / ₼
+                                <span id="xerc1">0</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="pt-11 pb-3 text-lg font-medium text-[#212529]">
+                        <h3>Veb sayt əlavələri</h3>
+                        <div class="bg-gray-100 mt-4 py-2 px-4 grid lg:grid-cols-2 grid-cols-1 gap-x-6 gap-y-4 ">
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Bloq</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="bloqCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Üzv girişi / profillər</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="profilCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Responsive</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="respCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Forum</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="formCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Mesajlaşma</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="mesajCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Canlı söhbət</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="canliCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Qalereya</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="qaleryCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Əlaqə forması</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="elaqeCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Saytda axtarış</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="axtarCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Xəritə məlumatı / Geolocation</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="mapCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Rezervasyon</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="rezCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Sosial media inteqrasiyası</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="sosialCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Analitika / İzləmə</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="izleCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Admin panel</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input id="adminCheckbox" onclick="clickCheck()" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bg-[#dee7f1] rounded-b-lg flex items-center justify-between p-4">
+                            <p>Xərc :</p>
+                            <h2 class="text-2xl text-[#a271f2] font-semibold">₼ <span id="xerc2">0</span></h2>
+                        </div>
+                    </div>
+                    <div class="pt-11 pb-3 text-lg font-medium  text-[#212529]">
+                        <h3>Axtarış motorunun optimallaşdırılması</h3>
+                        <div class="grid md:grid-cols-2 grid-cols-1 gap-x-6 gap-y-4 bg-gray-100 mt-4 py-2 px-4">
+                            <div class="flex py-2">
+                                <input type="checkbox" onclick="clickCheck()" id="metaCheckbox"
+                                    class="h-5 w-5  appearance-none bg-inherit border border-gray-500 rounded checked:hover:ring-4 hover:ring-[#a271f24c] transition-all duration-200 ease-in-out  checked:bg-[#a271f2]" />
+                                <p class="text-sm font-normal pl-2">Başlıqlar & Meta</p>
+                            </div>
+                            <div class="flex py-2">
+                                <input type="checkbox" onclick="clickCheck()" id="acharCheckbox"
+                                    class="h-5 w-5  appearance-none bg-inherit border border-gray-500 rounded checked:hover:ring-4 hover:ring-[#a271f24c] transition-all duration-200 ease-in-out  checked:bg-[#a271f2]" />
+                                <p class="text-sm font-normal pl-2">Açar söz</p>
+                            </div>
+                            <div class="flex py-2">
+                                <input type="checkbox" onclick="clickCheck()" id="qabaqCheckbox"
+                                    class="h-5 w-5  appearance-none bg-inherit border border-gray-500 rounded checked:hover:ring-4 hover:ring-[#a271f24c] transition-all duration-200 ease-in-out  checked:bg-[#a271f2]" />
+                                <p class="text-sm font-normal pl-2">+20 qabaqcıl texnika</p>
+                            </div>
+                            <div class="flex py-2">
+                                <input type="checkbox" onclick="clickCheck()" id="teqCheckbox"
+                                    class="h-5 w-5  appearance-none bg-inherit border border-gray-500 rounded checked:hover:ring-4 hover:ring-[#a271f24c] transition-all duration-200 ease-in-out  checked:bg-[#a271f2]" />
+                                <p class="text-sm font-normal pl-2">Başlıq teqləri</p>
+                            </div>
+                            <div class="flex py-2">
+                                <input type="checkbox" onclick="clickCheck()" id="sideCheckbox"
+                                    class="h-5 w-5  appearance-none bg-inherit border border-gray-500 rounded checked:hover:ring-4 hover:ring-[#a271f24c] transition-all duration-200 ease-in-out  checked:bg-[#a271f2]" />
+                                <p class="text-sm font-normal pl-2">Sidemap</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#dee7f1] rounded-b-lg flex items-center justify-between p-4">
+                            <p>Xərc :</p>
+                            <h2 class="text-2xl text-[#a271f2] font-semibold">₼ <span id="xerc3">0</span></h2>
+                        </div>
+                    </div>
+                    <div class="pt-11 pb-3 text-lg font-medium text-[#212529]">
+                        <h3>Elektron ticarət əlavələri</h3>
+                        <div class="bg-gray-100 mt-4 py-2 px-4">
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Ödəniş</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input onclick="clickCheck()" id="odenisCheckbox" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Səbət</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input onclick="clickCheck()" id="sebetCheckbox" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Məhsullar</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input onclick="clickCheck()" id="mehsulCheckbox" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Bəyəndiklərim</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input onclick="clickCheck()" id="beyenCheckbox" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Filtr</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input onclick="clickCheck()" id="filtrCheckbox" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <h3>Məhsul haqqında</h3>
+                                <label class="relative inline-block w-11 h-6">
+                                    <input onclick="clickCheck()" id="haqqCheckbox" type="checkbox"
+                                        class="opacity-0 w-0 h-0 peer" />
+                                    <span
+                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="bg-[#dee7f1] rounded-b-lg flex items-center justify-between p-4">
+                            <p>Xərc :</p>
+                            <h2 class="text-2xl text-[#a271f2] font-semibold">₼ <span id="xerc4">0</span></h2>
+                        </div>
+                    </div>
+                    <div class="pt-11 pb-3 text-lg font-medium text-[#212529]">
+                        <h3>Logo dizaynı</h3>
+                        <div class="bg-gray-100 mt-4 py-4  font-normal px-4">
+                            <div class="flex items-center flex-col">
+                                <div class="flex w-full justify-between mb-4 text-xs">
+                                    <p>Ehtiyyac yoxdur</p>
+                                    <p>Sadə</p>
+                                    <p>Xüsusi</p>
+                                </div>
+                                <input id="seviyyeRange2" type="range" min="1" max="3" step="1" value="1"
+                                    class="range-slider mx-1 w-full rounded-lg appearance-none h-2 bg-gray-200 " />
+                            </div>
+                        </div>
+                        <div class="bg-[#dee7f1] rounded-b-lg flex items-center justify-between p-4">
+                            <p>Xərc :</p>
+                            <h2 class="text-2xl text-[#a271f2] font-semibold">₼ <span id="xerc5">0</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2 md:mt-0 bg-white px-2 sticky top-0 w-full h-full lg:w-1/3">
+                <div class="p-8">
+                    <p>Təklifimiz</p>
+                    <div class="flex justify-between py-2">
+                        <p class="text-gray-500">Statik səhifələr :</p>
+                        <p class="text-[#a271f2] font-semibold text-xl">₼ <span id="xerc1copy">0</span></p>
+                    </div>
+                    <div class="flex justify-between py-2">
+                        <p class="text-gray-500">Əlavələr :</p>
+                        <p class="text-[#a271f2] font-semibold text-xl">₼ <span id="xerc2copy">0</span></p>
+                    </div>
+                    <div class="flex justify-between py-2">
+                        <p class="text-gray-500">SEO :</p>
+                        <p class="text-[#a271f2] font-semibold text-xl">₼ <span id="xerc3copy">0</span></p>
+                    </div>
+                    <div class="flex justify-between py-2">
+                        <p class="text-gray-500">E-ticarət :</p>
+                        <p class="text-[#a271f2] font-semibold text-xl">₼ <span id="xerc4copy">0</span></p>
+                    </div>
+                    <div class="flex justify-between py-2">
+                        <p class="text-gray-500">Logo dizayn :</p>
+                        <p class="text-[#a271f2] font-semibold text-xl">₼ <span id="xerc5copy">0</span></p>
+                    </div>
+                    <hr class="my-2" />
+                    <div class="flex flex-wrap justify-between py-2 items-center">
+                        <p class="text-gray-500 font-bold">Qeyd :</p>
+                        <p class="text-gray-400 flex items-center">Minimum sayt qiyməti <span
+                                class="text-[#a271f2] font-normal text-lg p-2">₼ 450</span></p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center p-8 bg-[#a271f2]">
+                    <p class="text-white text-xl">Ümumi təxmini dəyəri:</p>
+                    <p class="text-white font-semibold text-xl">₼ <span id="allXerc">450</span></p>
+                </div>
+                <button class="bg-[#2bc48a] text-white w-full h-12 rounded-lg my-4 mb-12 font-semibold">Saytınızı indi
+                    sifariş edin</button>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-[#faf4ff] mt-12">
+        <div
+            class="px-4 text-[#4a2182] flex-col gap-5 lg:flex-row lg:justify-between lg:items-center  mx-auto max-w-[1296px] flex justify-between  py-6 p-2">
+            <div class=" pt-5 w-3/4 lg:w-2/3">
+                <svg width="150" height="200" viewBox="0 0 131 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_2391_1204)">
+                        <path
+                            d="M10.2789 31.0504C6.96305 31.0504 4.4557 30.4233 2.77754 29.1474C1.09937 27.8723 0.16676 25.9901 0.00128174 23.4809H2.46727C3.66878 23.4809 4.85051 24.1298 5.34694 25.2378C6.00976 26.7434 7.64745 27.4957 10.2375 27.4957C11.7709 27.4957 12.9517 27.1826 13.7809 26.5546C14.6092 25.9275 15.0031 25.1326 15.0031 24.1706C15.0031 23.5435 14.7963 23.0417 14.3817 22.6442C13.9671 22.2467 13.4284 21.9127 12.7449 21.6614C12.0614 21.3891 11.2943 21.1595 10.4246 20.9499C9.55404 20.7412 8.68439 20.5106 7.77246 20.281C6.88121 20.0514 5.99087 19.7592 5.12031 19.4244C4.24975 19.0895 3.48352 18.6711 2.80002 18.1493C2.11652 17.6266 1.57782 16.9995 1.16323 16.2254C0.748631 15.4722 0.541784 14.532 0.541784 13.424C0.541784 12.3994 0.748631 11.4583 1.16323 10.6225C1.57782 9.76491 2.17858 9.03346 2.9664 8.42725C3.75332 7.82103 4.70662 7.34006 5.82629 6.98432C6.94507 6.64945 8.23022 6.4616 9.65927 6.4616C12.8087 6.4616 15.1713 7.02606 16.7667 8.155C18.3622 9.28393 19.1904 10.9565 19.2741 13.1735H16.4358C15.3791 13.1735 14.4671 12.5464 13.9077 11.6053C13.2656 10.5181 11.9184 9.97363 9.86701 9.97363C9.26536 9.97363 8.70597 10.0362 8.16727 10.1624C7.62856 10.2876 7.1726 10.4755 6.80027 10.706C6.40636 10.9356 6.11678 11.2496 5.88834 11.6053C5.66081 11.9602 5.55649 12.3585 5.55649 12.8177C5.55649 13.2152 5.61854 13.5501 5.72197 13.8423C5.82629 14.1345 6.09519 14.4068 6.4882 14.6364C6.88211 14.8878 7.48287 15.1382 8.27069 15.3687C9.05851 15.6201 10.1152 15.8915 11.4409 16.2263C12.9329 16.6238 14.2387 17.0213 15.3161 17.4179C16.3935 17.8154 17.2847 18.2755 17.9682 18.7973C18.6526 19.3409 19.1707 19.9689 19.4809 20.7212C19.8128 21.4526 19.9567 22.3937 19.9567 23.4809C19.9567 24.5681 19.7507 25.5727 19.3361 26.492C18.9215 27.4113 18.3208 28.2063 17.4916 28.876C16.684 29.5448 15.6686 30.0676 14.4662 30.4442C13.2647 30.8199 11.8554 31.0086 10.2393 31.0086L10.2807 31.0504H10.2789ZM116.68 26.3668L130.233 11.2705V7.23479H107.957V7.77838C108.62 8.34285 109.159 9.05342 109.511 9.95276C109.676 10.3502 109.801 10.8312 109.905 11.3539H123.622L110.07 26.4503V30.4859H131V29.4822C131 27.7471 129.611 26.3459 127.892 26.3459H116.661L116.68 26.3668ZM107.606 10.9565C107.171 9.86927 106.508 9.03255 105.617 8.42634C104.684 7.79925 103.649 7.33915 102.447 7.0669C101.266 6.79556 99.8979 6.66941 98.3447 6.66941C91.7967 6.66941 88.3774 9.07429 88.0662 13.8832H90.5529C91.6923 13.8832 92.8327 13.2978 93.3291 12.2524C93.5576 11.7923 93.8885 11.3948 94.3031 11.1026C95.1728 10.4954 96.4166 10.1824 98.0534 10.1824C99.7522 10.1824 100.974 10.4954 101.721 11.1652C102.301 11.6253 102.695 12.2524 102.881 13.0682C102.964 13.3813 103.005 13.7997 103.027 14.3433C103.047 14.866 103.068 15.4931 103.068 16.1828H101.099C96.4588 16.1828 92.9775 16.8516 90.677 18.1902C88.854 19.2574 87.7766 20.7402 87.3827 22.6433C88.0455 23.166 88.6049 23.8149 89.0411 24.5672C89.2273 24.8803 89.3927 25.1943 89.4962 25.5291C89.7866 26.3032 89.9521 27.1182 89.9521 27.9966C89.9521 28.4985 89.8901 29.0003 89.7866 29.4604C90.471 29.9414 91.2373 30.318 92.1069 30.5894C93.0809 30.8825 94.0963 31.0286 95.1944 31.0286C98.4059 31.0286 101.037 30.1084 103.109 28.2471V30.485H105.14C106.86 30.485 108.248 29.0838 108.248 27.3487V15.4096C108.248 13.5065 108.021 12.0219 107.585 10.9347L107.606 10.9565ZM103.089 24.3594C102.758 24.8195 102.364 25.2369 101.929 25.6135C101.473 25.9901 100.996 26.3041 100.457 26.5546C99.9186 26.806 99.3592 27.0147 98.7584 27.1617C98.1577 27.3078 97.5569 27.3705 96.9355 27.3705C95.5883 27.3705 94.5118 27.0773 93.7239 26.5129C92.9163 25.9484 92.5215 25.0908 92.5215 23.9828C92.5215 22.4563 93.205 21.3274 94.5522 20.595C95.8994 19.8636 97.9301 19.5079 100.602 19.5079H103.089V24.3793V24.3594ZM76.7103 27.9975C76.7103 27.6209 76.7516 27.2443 76.8137 26.8895C76.7516 26.8895 76.6896 26.8895 76.6275 26.8895C76.275 26.8895 75.9647 26.8477 75.6949 26.7425C75.4251 26.6381 75.1769 26.4711 74.9898 26.1989C74.8037 25.9266 74.658 25.5718 74.5546 25.0899C74.4502 24.6089 74.4089 23.9818 74.4089 23.2295V10.9347H75.0717C76.7912 10.9347 78.1798 9.53349 78.1798 7.79835V7.00337H74.408V3.1356C74.408 1.40045 73.0194 -0.000732422 71.2999 -0.000732422H69.2071V7.00428C67.5703 7.00428 66.2438 8.34285 66.2438 9.9945V10.9356H69.2071V23.8784C69.2071 25.0491 69.2898 26.0528 69.4562 26.9312C69.6217 27.8088 69.9329 28.5203 70.4095 29.1056C70.8655 29.6701 71.5076 30.1093 72.3368 30.4024C73.1444 30.6946 74.2011 30.8417 75.4863 30.8417C76.087 30.8417 76.6464 30.8208 77.1438 30.779C77.1851 30.779 77.2481 30.7582 77.2895 30.7582C77.2274 30.5912 77.1653 30.4233 77.124 30.2563C76.8749 29.5666 76.7507 28.8134 76.7507 28.0402L76.7103 27.9975ZM60.0716 7.02606H61.087C63.2427 7.02606 64.7554 9.20044 63.9882 11.2496L56.9024 30.5068C56.4464 31.741 56.0111 32.8282 55.6172 33.7484C55.2233 34.6686 54.8303 35.4209 54.4571 36.0271C54.1468 36.529 53.7943 37.0308 53.4003 37.5118C53.0064 37.9928 52.5712 38.4111 52.0738 38.7868C51.5765 39.1626 51.0378 39.4557 50.4163 39.6644C49.8156 39.8949 49.1312 39.9993 48.3856 39.9993C47.7426 39.9993 47.2246 39.9575 46.8316 39.8949C46.0851 39.7697 45.5464 39.1208 45.5464 38.3685V35.1069C45.9197 35.253 46.2929 35.3583 46.6652 35.4C47.0384 35.4627 47.4117 35.4835 47.7633 35.4835C48.2606 35.4835 48.6959 35.3783 49.1105 35.1695C49.5044 34.9608 49.8767 34.6468 50.2086 34.2285C50.5405 33.8101 50.8507 33.2874 51.1619 32.6603C51.4515 32.0332 51.7627 31.3226 52.0316 30.4859L43.3287 7.02606H46.5411C47.8883 7.02606 49.0691 7.90362 49.4837 9.17957L52.1359 17.3553C52.5298 18.6094 52.9228 19.8645 53.2753 21.0978C53.6486 22.3311 54.0416 23.5653 54.4562 24.7986L60.0501 7.02606H60.0716ZM38.189 28.2489C36.0962 30.1102 33.444 31.0504 30.1902 31.0504C29.0922 31.0504 28.0561 30.9043 27.0821 30.6112C26.1081 30.318 25.2376 29.8788 24.5127 29.3143C23.787 28.7499 23.1862 28.0393 22.7716 27.1817C22.3363 26.345 22.1295 25.3622 22.1295 24.2332C22.1295 21.4944 23.2896 19.4461 25.6315 18.0867C27.9518 16.7273 31.4754 16.0584 36.1376 16.0584H38.1269C38.1269 15.347 38.1062 14.7407 38.0855 14.1971C38.0648 13.6536 38.0028 13.2352 37.9398 12.9221C37.7537 12.1072 37.3598 11.4792 36.7797 10.9982C36.0332 10.3493 34.811 10.0154 33.0915 10.0154C31.434 10.0154 30.1696 10.3285 29.2999 10.9347C28.8646 11.2487 28.5337 11.6253 28.3052 12.1063C27.8079 13.1517 26.6684 13.7579 25.5074 13.7579H23C23.2896 8.90732 26.7503 6.48065 33.3604 6.48065C34.9145 6.48065 36.303 6.62767 37.5046 6.87814C38.707 7.14948 39.7637 7.60959 40.6954 8.23758C41.6073 8.84379 42.2701 9.70138 42.7054 10.7886C43.1407 11.8758 43.3682 13.3813 43.3682 15.3052V27.3696C43.3682 29.1047 41.9797 30.5059 40.2601 30.5059H38.1872V28.248L38.189 28.2489ZM38.1476 19.4253H35.6402C32.9467 19.4253 30.8953 19.8019 29.5274 20.5333C28.1595 21.2657 27.476 22.4155 27.476 23.9628C27.476 25.0917 27.87 25.9493 28.6776 26.5138C29.4861 27.0782 30.5635 27.3714 31.9314 27.3714C32.5528 27.3714 33.1536 27.3088 33.7759 27.1626C34.3767 27.0165 34.9567 26.8078 35.4954 26.5564C36.0341 26.2851 36.5315 25.9711 36.9874 25.5945C37.4434 25.2179 37.8373 24.7995 38.1683 24.3394V19.4262L38.1476 19.4253Z"
+                            fill="#334155" />
+                        <path
+                            d="M83.2174 32.4942C85.6825 32.4942 87.6718 30.4868 87.6718 27.9985C87.6718 25.5101 85.6834 23.5027 83.2174 23.5027C80.7514 23.5027 78.7621 25.5101 78.7621 27.9985C78.7621 30.4868 80.7514 32.4942 83.2174 32.4942Z"
+                            fill="#7D3BE2" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_2391_1204">
+                            <rect width="131" height="40" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
+                <p class="mb-10">Sayt.az - Web saytların hazırlanması, Domain, Hosting satışı, SEO, SMM və texniki
+                    xidmətlər təklif
+                    edir.
+
+                </p>
+                <div class="pb-14">
+                    <h3 class="my-8 font-bold">Bizi izləyin :</h3>
+                    <div class="flex gap-4 items-center flex-wrap">
+                        <a target="_blank" href="https://www.facebook.com/wwwsaytaz"
+                            class="text-mainLightPurple hover:text-mainLightPurpleHover active:text-mainLightPurpleActive"><span
+                                class="sr-only">Facebook</span><svg fill="currentColor" viewBox="0 0 24 24"
+                                class="md:h-12 h-8 md:w-12 w-8" style="fill: rgb(162, 113, 242);" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                    clip-rule="evenodd"></path>
+                            </svg></a>
+                        <a target="_blank" href="https://www.instagram.com/sayt.az"
+                            class="text-mainLightPurple hover:text-mainLightPurpleHover active:text-mainLightPurpleActive"><span
+                                class="sr-only">Instagram</span><svg fill="currentColor" viewBox="0 0 24 24"
+                                class="md:h-12 h-8 md:w-12 w-8" style="fill: rgb(162, 113, 242);" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                    clip-rule="evenodd"></path>
+                            </svg></a>
+                        <a target="_blank"
+                            href="https://api.whatsapp.com/send?phone=994703300004&amp;text=Salam. Xidmətlərinizlə maraqlanıram."
+                            class="text-mainLightPurple hover:text-mainLightPurpleHover active:text-mainLightPurpleActive"><span
+                                class="sr-only">Whatsapp</span><svg xmlns="http://www.w3.org/2000/svg"
+                                class="md:h-12 h-7 md:w-12 w-8" aria-hidden="true"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor" version="1.1"
+                                id="Layer_1" viewBox="0 0 308 308" xml:space="preserve"
+                                style="fill: rgb(162, 113, 242);">
+                                <g id="XMLID_468_">
+                                    <path id="XMLID_469_"
+                                        d="M227.904,176.981c-0.6-0.288-23.054-11.345-27.044-12.781c-1.629-0.585-3.374-1.156-5.23-1.156   c-3.032,0-5.579,1.511-7.563,4.479c-2.243,3.334-9.033,11.271-11.131,13.642c-0.274,0.313-0.648,0.687-0.872,0.687   c-0.201,0-3.676-1.431-4.728-1.888c-24.087-10.463-42.37-35.624-44.877-39.867c-0.358-0.61-0.373-0.887-0.376-0.887   c0.088-0.323,0.898-1.135,1.316-1.554c1.223-1.21,2.548-2.805,3.83-4.348c0.607-0.731,1.215-1.463,1.812-2.153   c1.86-2.164,2.688-3.844,3.648-5.79l0.503-1.011c2.344-4.657,0.342-8.587-0.305-9.856c-0.531-1.062-10.012-23.944-11.02-26.348   c-2.424-5.801-5.627-8.502-10.078-8.502c-0.413,0,0,0-1.732,0.073c-2.109,0.089-13.594,1.601-18.672,4.802   c-5.385,3.395-14.495,14.217-14.495,33.249c0,17.129,10.87,33.302,15.537,39.453c0.116,0.155,0.329,0.47,0.638,0.922   c17.873,26.102,40.154,45.446,62.741,54.469c21.745,8.686,32.042,9.69,37.896,9.69c0.001,0,0.001,0,0.001,0   c2.46,0,4.429-0.193,6.166-0.364l1.102-0.105c7.512-0.666,24.02-9.22,27.775-19.655c2.958-8.219,3.738-17.199,1.77-20.458   C233.168,179.508,230.845,178.393,227.904,176.981z">
+                                    </path>
+                                    <path id="XMLID_470_"
+                                        d="M156.734,0C73.318,0,5.454,67.354,5.454,150.143c0,26.777,7.166,52.988,20.741,75.928L0.212,302.716   c-0.484,1.429-0.124,3.009,0.933,4.085C1.908,307.58,2.943,308,4,308c0.405,0,0.813-0.061,1.211-0.188l79.92-25.396   c21.87,11.685,46.588,17.853,71.604,17.853C240.143,300.27,308,232.923,308,150.143C308,67.354,240.143,0,156.734,0z    M156.734,268.994c-23.539,0-46.338-6.797-65.936-19.657c-0.659-0.433-1.424-0.655-2.194-0.655c-0.407,0-0.815,0.062-1.212,0.188   l-40.035,12.726l12.924-38.129c0.418-1.234,0.209-2.595-0.561-3.647c-14.924-20.392-22.813-44.485-22.813-69.677   c0-65.543,53.754-118.867,119.826-118.867c66.064,0,119.812,53.324,119.812,118.867   C276.546,215.678,222.799,268.994,156.734,268.994z">
+                                    </path>
+                                </g>
+                            </svg></a>
+                        <a target="_blank" href="https://www.linkedin.com/company/saytaz/"
+                            class="text-mainLightPurple hover:text-mainLightPurpleHover active:text-mainLightPurpleActive"><span
+                                class="sr-only">LinkedIn</span><svg fill="currentColor" viewBox="0 0 24 24"
+                                class="md:h-12 h-7 md:w-12 w-8 " style="fill: rgb(162, 113, 242);" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M24.7154 14.9622V23.4762H19.6042V15.5324C19.6042 13.537 18.8647 12.1753 17.0151 12.1753C15.6027 12.1753 14.7623 13.093 14.3924 13.981C14.2575 14.2984 14.2227 14.7403 14.2227 15.1842V23.4762H9.10975C9.10975 23.4762 9.1785 10.0222 9.10975 8.62842H14.2218V10.7329C14.2115 10.7487 14.1982 10.7657 14.1883 10.7811H14.2218V10.7329C14.9012 9.72258 16.1141 8.27948 18.8291 8.27948C22.1937 8.27948 24.7154 10.4018 24.7154 14.9622ZM3.76184 1.47095C2.01271 1.47095 0.868958 2.5788 0.868958 4.03602C0.868958 5.46129 1.98005 6.60276 3.69438 6.60276H3.72832C5.51141 6.60276 6.61993 5.46129 6.61993 4.03602C6.58641 2.5788 5.51141 1.47095 3.76184 1.47095ZM1.17273 23.4762H6.2835V8.62842H1.17273V23.4762Z"
+                                    clip-rule="evenodd"></path>
+                            </svg></a>
+                        <a target="_blank" href="https://www.youtube.com/@sayt-az"
+                            class="text-mainLightPurple hover:text-mainLightPurpleHover active:text-mainLightPurpleActive"><span
+                                class="sr-only">YouTube</span><svg fill="currentColor" viewBox="0 0 24 24"
+                                class="md:h-12 h-8 md:w-12 w-8" style="fill: rgb(162, 113, 242);" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
+                                    clip-rule="evenodd"></path>
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-1/4 md:w-full lg:2/3 flex flex-col md:flex-row ">
+                <div class=" md:w-2/4 lg:w-1/2">
+                    <h1 class="text-2xl uppercase font-bold">Hosting & Domen</h1>
+                    <ul class="py-4 flex flex-col gap-4 font-semibold">
+                        <li><a href="#">Domen</a></li>
+                        <li><a href="#">Veb Hostinq</a></li>
+                        <li><a href="#">Vps Hostinq</a></li>
+                        <li><a href="#">Server</a></li>
+                    </ul>
+                </div>
+                <div class=" md:w-2/4 lg:w-1/2 pt-4 md:pt-0">
+                    <h1 class="text-2xl uppercase font-bold">Şirkət</h1>
+                    <ul class="py-4 flex flex-col gap-4 font-semibold">
+                        <li><a href="#">Haqqımızda</a></li>
+                        <li><a href="#">Əlaqə</a></li>
+                        <li><a href="#">Bloq</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="p-4 text-[rgb(74,33,130)] flex mx-auto max-w-[1296px] flex-col lg:flex-row lg:justify-between">
+            <div class=" flex flex-col md:flex-row gap-4 pb-4 order-1">
+                <div class="flex items-center"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_299_1342)">
+                            <g clip-path="url(#clip1_299_1342)">
+                                <mask id="mask0_299_1342" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0"
+                                    y="0" width="16" height="16">
+                                    <path d="M16 0H0V16H16V0Z" fill="white" />
+                                </mask>
+                                <g mask="url(#mask0_299_1342)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M2.46256 1.51747C2.21191 1.51747 1.97152 1.61704 1.79428 1.79428C1.62176 1.9668 1.52283 2.19916 1.51768 2.44257C1.71416 5.57102 3.04553 8.52062 5.26246 10.7375C7.47938 12.9545 10.429 14.2858 13.5574 14.4823C13.8008 14.4772 14.0332 14.3782 14.2057 14.2057C14.383 14.0285 14.4825 13.7881 14.4825 13.5374V10.6435L11.2999 9.3704L10.3544 10.9461C10.1513 11.2847 9.72237 11.4109 9.36823 11.2362C7.36849 10.25 5.75001 8.63151 4.76378 6.63177C4.58912 6.27763 4.71529 5.84872 5.05389 5.64556L6.6296 4.70014L5.35653 1.51747H2.46256ZM0.721268 0.721268C1.18309 0.259448 1.80945 0 2.46256 0H5.87022C6.18047 0 6.45946 0.188888 6.57468 0.476948L8.27851 4.73652C8.41682 5.08228 8.28374 5.47731 7.96441 5.66891L6.45807 6.57271C7.18759 7.79217 8.20783 8.81241 9.42729 9.54193L10.3311 8.03559C10.5227 7.71626 10.9177 7.58318 11.2635 7.72149L15.5231 9.42531C15.8111 9.54054 16 9.81953 16 10.1298V13.5374C16 14.1905 15.7406 14.8169 15.2787 15.2787C14.8169 15.7406 14.1905 16 13.5374 16C13.5221 16 13.5067 15.9995 13.4914 15.9986C9.98335 15.7854 6.6746 14.2957 4.18944 11.8106C1.70429 9.3254 0.214584 6.01665 0.00139719 2.50859C0.000465929 2.49326 0 2.47791 0 2.46256C0 1.80945 0.259448 1.18309 0.721268 0.721268Z"
+                                        fill="#4A2182" />
+                                </g>
+                            </g>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_299_1342">
+                                <rect width="16" height="16" fill="white" />
+                            </clipPath>
+                            <clipPath id="clip1_299_1342">
+                                <rect width="16" height="16" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+                    <p class="pl-2">+(99470) 330-00-04</p>
+                </div>
+                <hr class="hidden md:block min-h-[24px] w-[1px] bg-slate-200" />
+                <div class="flex items-center"><svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_299_1353)">
+                            <g clip-path="url(#clip1_299_1353)">
+                                <g clip-path="url(#clip2_299_1353)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M4.07686 3.45291L8.94995 7.94124L13.8231 3.45291H4.07686ZM15.3593 4.09277L9.50767 9.48229C9.19965 9.76599 8.70025 9.76599 8.39223 9.48229L2.5407 4.09277C2.53194 4.13866 2.52741 4.18563 2.52741 4.23318V11.7668C2.52741 11.9785 2.61702 12.1786 2.77148 12.3239C2.92541 12.4686 3.13067 12.5471 3.34119 12.5471H14.5588C14.7693 12.5471 14.9745 12.4686 15.1285 12.3239C15.2829 12.1786 15.3725 11.9785 15.3725 11.7668V4.23318C15.3725 4.18563 15.368 4.13866 15.3593 4.09277ZM1.64461 2.65941C2.09174 2.239 2.70168 2 3.34119 2H14.5588C15.1983 2 15.8082 2.239 16.2553 2.65941C16.7019 3.07931 16.95 3.64568 16.95 4.23318V11.7668C16.95 12.3543 16.7019 12.9207 16.2553 13.3406C15.8082 13.761 15.1983 14 14.5588 14H3.34119C2.70168 14 2.09174 13.761 1.64461 13.3406C1.19802 12.9207 0.949951 12.3543 0.949951 11.7668V4.23318C0.949951 3.64568 1.19802 3.07931 1.64461 2.65941Z"
+                                        fill="#4A2182" />
+                                </g>
+                            </g>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_299_1353">
+                                <rect width="16" height="16" fill="white" transform="translate(0.949951)" />
+                            </clipPath>
+                            <clipPath id="clip1_299_1353">
+                                <rect width="16" height="16" fill="white" transform="translate(0.949951)" />
+                            </clipPath>
+                            <clipPath id="clip2_299_1353">
+                                <rect width="16" height="16" fill="white" transform="translate(0.949951)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+                    <p class="pl-2">support@sayt.az</p>
+                </div>
+            </div>
+            <hr class="md:hidden" />
+            <p class="py-2 lg:py-0 lg:w-8/12">© Copyright 2004-2024 © Sayt.az . Bütün Hüquqlar Qorunur.</p>
+        </div>
+    </footer>
+    <script src="app.js"></script>
+</body>
+
+</html>
