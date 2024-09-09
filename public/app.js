@@ -117,3 +117,18 @@ function updateTotal() {
         parseInt(xerc3.innerHTML) + parseInt(xerc4.innerHTML) +
         parseInt(xerc5.innerHTML)
 }
+function displayPopup() {
+    const popup = document.getElementById("popup")
+    popup.classList.toggle("hidden")
+    popup.classList.toggle("flex")
+}
+
+function stopPopup(event) {
+    event.stopPropagation()
+}
+
+function deletePopup() {
+    const popup = document.getElementById("popup")
+    popup.classList.add("hidden")
+    popup.classList.remove("flex")
+}

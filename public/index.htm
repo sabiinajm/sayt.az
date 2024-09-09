@@ -1351,10 +1351,45 @@
                     <p class="text-white text-xl">Ümumi təxmini dəyəri:</p>
                     <p class="text-white font-semibold text-xl">₼ <span id="allXerc">450</span></p>
                 </div>
-                <button class="bg-[#2bc48a] text-white w-full h-12 rounded-lg my-4 mb-12 font-semibold">Saytınızı indi
+                <button onclick="displayPopup()" class="bg-[#2bc48a] text-white w-full h-12 rounded-lg my-4 mb-12 font-semibold">Saytınızı indi
                     sifariş edin</button>
             </div>
         </div>
+        <div id="popup" class="bg-opacity-25 backdrop-blur-sm z-[999] fixed justify-center hidden place-items-center inset-0"
+        onclick="displayPopup()">
+        <div class="shadow-md border border-solid border-lightgray max-w-[350px] md:max-w-full rounded-md bg-white" 
+        onclick="stopPopup(event)">
+            <div class="pt-7 pb-7 px-7">
+                <div class="flex justify-between items-center">
+                    <h1>Veb sayt təklifi</h1>
+                    <i class="fa-solid fa-x opacity-50 hover:opacity-100" onclick="deletePopup()"></i>
+                </div>
+                <h5>Zəhmət olmasa əlaqə məlumatlarını təqdim edin</h5>
+            </div>
+            <form class="px-6">
+                <div class="mb-3">
+                    <input class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px] border border-[rgb(107,114,128)]" type="text" placeholder="Ad ve soyad" required>
+                </div>
+                <div class="flex justify-between mb-3 gap-x-1">
+                    <input class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px] border border-[rgb(107,114,128)]" type="tel" placeholder="Telefon nomreniz" required>
+                    <input class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px] border border-[rgb(107,114,128)]" type="email" placeholder="Elektron poct unvani" required>
+                </div>
+                <textarea class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px]  border border-[rgb(107,114,128)]" cols="30" rows="5" placeholder="Bezi qeydler...(Mecburi deyil)"></textarea>
+                <div class="py-3 flex justify-center items-center">
+                    <button
+                        class="text-white items-center gap-1 mx-auto border rounded-[0.75rem] py-[15px] px-[6.25rem] text-[17px] font-semibold bg-[rgb(43,196,138)]">Muraciet
+                        et
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+                            class="inline" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
     </main>
     <footer class="bg-[#faf4ff] mt-12">
         <div
