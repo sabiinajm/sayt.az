@@ -1001,7 +1001,7 @@
                             <div class="flex items-center">
                                 <span
                                     class="text-white bg-[#a271f2] flex justify-center items-center h-8 w-8 rounded-lg">1</span>
-                                <input id="sliderRange" type="range" min="1" max="20" step="1" value="4"
+                                <input id="sliderRange" type="range" min="100" max="2000" step="100" value="400"
                                     class="range-slider mx-1 rounded-lg w-full appearance-none h-2 bg-gray-200 " />
                                 <span
                                     class="text-white bg-[#a271f2] flex justify-center items-center h-8 w-8 rounded-lg">20</span>
@@ -1024,277 +1024,43 @@
                             </h2>
                         </div>
                     </div>
-                    <div class="pt-11 pb-3 text-lg font-medium text-[#212529]">
-                        <h3>Veb sayt əlavələri</h3>
-                        <div class="bg-gray-100 mt-4 py-2 px-4 grid lg:grid-cols-2 grid-cols-1 gap-x-6 gap-y-4 ">
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Bloq</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="bloqCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Üzv girişi / profillər</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="profilCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Responsive</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="respCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Forum</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="formCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Mesajlaşma</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="mesajCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Canlı söhbət</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="canliCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Qalereya</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="qaleryCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Əlaqə forması</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="elaqeCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Saytda axtarış</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="axtarCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Xəritə məlumatı / Geolocation</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="mapCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Rezervasyon</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="rezCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Sosial media inteqrasiyası</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="sosialCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Analitika / İzləmə</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="izleCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Admin panel</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input id="adminCheckbox" onclick="clickCheck()" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="bg-[#dee7f1] rounded-b-lg flex items-center justify-between p-4">
-                            <p>Xərc :</p>
-                            <h2 class="text-2xl text-[#a271f2] font-semibold">₼ <span id="xerc2">0</span></h2>
-                        </div>
-                    </div>
-                    <div class="pt-11 pb-3 text-lg font-medium  text-[#212529]">
-                        <h3>Axtarış motorunun optimallaşdırılması</h3>
-                        <div class="grid md:grid-cols-2 grid-cols-1 gap-x-6 gap-y-4 bg-gray-100 mt-4 py-2 px-4">
-                            <div class="flex py-2">
-                                <input type="checkbox" onclick="clickCheck()" id="metaCheckbox"
-                                    class="h-5 w-5  appearance-none bg-inherit border border-gray-500 rounded checked:hover:ring-4 hover:ring-[#a271f24c] transition-all duration-200 ease-in-out  checked:bg-[#a271f2]" />
-                                <p class="text-sm font-normal pl-2">Başlıqlar & Meta</p>
-                            </div>
-                            <div class="flex py-2">
-                                <input type="checkbox" onclick="clickCheck()" id="acharCheckbox"
-                                    class="h-5 w-5  appearance-none bg-inherit border border-gray-500 rounded checked:hover:ring-4 hover:ring-[#a271f24c] transition-all duration-200 ease-in-out  checked:bg-[#a271f2]" />
-                                <p class="text-sm font-normal pl-2">Açar söz</p>
-                            </div>
-                            <div class="flex py-2">
-                                <input type="checkbox" onclick="clickCheck()" id="qabaqCheckbox"
-                                    class="h-5 w-5  appearance-none bg-inherit border border-gray-500 rounded checked:hover:ring-4 hover:ring-[#a271f24c] transition-all duration-200 ease-in-out  checked:bg-[#a271f2]" />
-                                <p class="text-sm font-normal pl-2">+20 qabaqcıl texnika</p>
-                            </div>
-                            <div class="flex py-2">
-                                <input type="checkbox" onclick="clickCheck()" id="teqCheckbox"
-                                    class="h-5 w-5  appearance-none bg-inherit border border-gray-500 rounded checked:hover:ring-4 hover:ring-[#a271f24c] transition-all duration-200 ease-in-out  checked:bg-[#a271f2]" />
-                                <p class="text-sm font-normal pl-2">Başlıq teqləri</p>
-                            </div>
-                            <div class="flex py-2">
-                                <input type="checkbox" onclick="clickCheck()" id="sideCheckbox"
-                                    class="h-5 w-5  appearance-none bg-inherit border border-gray-500 rounded checked:hover:ring-4 hover:ring-[#a271f24c] transition-all duration-200 ease-in-out  checked:bg-[#a271f2]" />
-                                <p class="text-sm font-normal pl-2">Sidemap</p>
-                            </div>
-                        </div>
-                        <div class="bg-[#dee7f1] rounded-b-lg flex items-center justify-between p-4">
-                            <p>Xərc :</p>
-                            <h2 class="text-2xl text-[#a271f2] font-semibold">₼ <span id="xerc3">0</span></h2>
-                        </div>
-                    </div>
-                    <div class="pt-11 pb-3 text-lg font-medium text-[#212529]">
-                        <h3>Elektron ticarət əlavələri</h3>
-                        <div class="bg-gray-100 mt-4 py-2 px-4">
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Ödəniş</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input onclick="clickCheck()" id="odenisCheckbox" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Səbət</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input onclick="clickCheck()" id="sebetCheckbox" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Məhsullar</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input onclick="clickCheck()" id="mehsulCheckbox" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Bəyəndiklərim</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input onclick="clickCheck()" id="beyenCheckbox" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Filtr</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input onclick="clickCheck()" id="filtrCheckbox" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
-                            <div class="text-sm mt-4 flex justify-between">
-                                <h3>Məhsul haqqında</h3>
-                                <label class="relative inline-block w-11 h-6">
-                                    <input onclick="clickCheck()" id="haqqCheckbox" type="checkbox"
-                                        class="opacity-0 w-0 h-0 peer" />
-                                    <span
-                                        class="round absolute cursor-pointer inset-0 bg-gray-300 transition-all duration-300 ease-in-out rounded-full peer-checked:bg-[#a271f2]"></span>
-                                    <span
-                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
-                                </label>
-                            </div>
+                    <div class="mb-10">
+                        <h3 class="text-[#212529] text-lg font-medium mt-3">Veb sayt əlavələri</h3>
+                        <div class="bg-[#f8f8fa] mt-2 rounded-md  overflow-hidden">
+                            <div id="bloglar" class="grid lg:grid-cols-2 grid-cols-1 gap-x-6 gap-y-4 mt-4  py-2 px-4">
 
+                                <!-- Veb sayt əlavələri -->
+
+                            </div>
+                            <div class="flex justify-between items-center mt-4  py-4 px-4 bg-[#4a84bf26]">
+                                <p class="text-[#285a70]">Xərc :</p>
+                                <p id="ntc1" class="text-[#a271f2] sm:text-[22px] font-semibold">₼ 0</p>
+                            </div>
                         </div>
-                        <div class="bg-[#dee7f1] rounded-b-lg flex items-center justify-between p-4">
-                            <p>Xərc :</p>
-                            <h2 class="text-2xl text-[#a271f2] font-semibold">₼ <span id="xerc4">0</span></h2>
+                    </div>
+                    <div class="mb-10">
+                        <h3 class="text-[#212529] text-lg font-medium mt-3">Axtarış motorunun optimallaşdırılması</h3>
+                        <div class="seoPage bg-[#f8f8fa] mt-2 rounded-md  overflow-hidden">
+                            <div id="axtarislar" class="grid lg:grid-cols-2 grid-cols-1 gap-x-6 gap-y-4 py-4 px-4">
+                                <!-- Axtarış motorunun optimallaşdırılması -->
+                            </div>
+                            <div class="flex justify-between items-center mt-4  py-4 px-4 bg-[#4a84bf26]">
+                                <p class="text-[#285a70]">Xərc :</p>
+                                <p id="ntc2" class="text-[#a271f2] sm:text-[22px] font-semibold">₼ 0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-10">
+                        <h3 class="text-[#212529] text-lg font-medium mt-3">Elektron ticarət əlavələri</h3>
+                        <div class="addOnsPage bg-[#f8f8fa] mt-2 rounded-md  overflow-hidden">
+                            <div id="ecommerce" class="grid lg:grid-cols-2 grid-cols-1 gap-x-6 gap-y-4 mt-4  py-2 px-4">
+                                <!-- Elektron ticarət əlavələri -->
+
+                            </div>
+                            <div class="flex justify-between items-center mt-4  py-4 px-4 bg-[#4a84bf26]">
+                                <p class="text-[#285a70]">Xerc :</p>
+                                <p id="ntc3" class="text-[#a271f2] sm:text-[22px] font-semibold">₼ 0</p>
+                            </div>
                         </div>
                     </div>
                     <div class="pt-11 pb-3 text-lg font-medium text-[#212529]">
@@ -1312,7 +1078,7 @@
                         </div>
                         <div class="bg-[#dee7f1] rounded-b-lg flex items-center justify-between p-4">
                             <p>Xərc :</p>
-                            <h2 class="text-2xl text-[#a271f2] font-semibold">₼ <span id="xerc5">0</span></h2>
+                            <p id="ntc4" class="text-[#a271f2] sm:text-[22px] font-semibold">₼ 0</p>
                         </div>
                     </div>
                 </div>
@@ -1351,45 +1117,55 @@
                     <p class="text-white text-xl">Ümumi təxmini dəyəri:</p>
                     <p class="text-white font-semibold text-xl">₼ <span id="allXerc">450</span></p>
                 </div>
-                <button onclick="displayPopup()" class="bg-[#2bc48a] text-white w-full h-12 rounded-lg my-4 mb-12 font-semibold">Saytınızı indi
+                <button onclick="displayPopup()"
+                    class="bg-[#2bc48a] text-white w-full h-12 rounded-lg my-4 mb-12 font-semibold">Saytınızı indi
                     sifariş edin</button>
             </div>
         </div>
-        <div id="popup" class="bg-opacity-25 backdrop-blur-sm z-[999] fixed justify-center hidden place-items-center inset-0"
-        onclick="displayPopup()">
-        <div class="shadow-md border border-solid border-lightgray max-w-[350px] md:max-w-full rounded-md bg-white" 
-        onclick="stopPopup(event)">
-            <div class="pt-7 pb-7 px-7">
-                <div class="flex justify-between items-center">
-                    <h1>Veb sayt təklifi</h1>
-                    <i class="fa-solid fa-x opacity-50 hover:opacity-100" onclick="deletePopup()"></i>
+        <div id="popup"
+            class="bg-opacity-25 backdrop-blur-sm z-[999] fixed justify-center hidden place-items-center inset-0"
+            onclick="displayPopup()">
+            <div class="shadow-md border border-solid border-lightgray max-w-[350px] md:max-w-full rounded-md bg-white"
+                onclick="stopPopup(event)">
+                <div class="pt-7 pb-7 px-7">
+                    <div class="flex justify-between items-center">
+                        <h1>Veb sayt təklifi</h1>
+                        <i class="fa-solid fa-x opacity-50 hover:opacity-100" onclick="deletePopup()"></i>
+                    </div>
+                    <h5>Zəhmət olmasa əlaqə məlumatlarını təqdim edin</h5>
                 </div>
-                <h5>Zəhmət olmasa əlaqə məlumatlarını təqdim edin</h5>
+                <form class="px-6">
+                    <div class="mb-3">
+                        <input
+                            class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px] border border-[rgb(107,114,128)]"
+                            type="text" placeholder="Ad ve soyad" required>
+                    </div>
+                    <div class="flex justify-between mb-3 gap-x-1">
+                        <input
+                            class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px] border border-[rgb(107,114,128)]"
+                            type="tel" placeholder="Telefon nomreniz" required>
+                        <input
+                            class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px] border border-[rgb(107,114,128)]"
+                            type="email" placeholder="Elektron poct unvani" required>
+                    </div>
+                    <textarea
+                        class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px]  border border-[rgb(107,114,128)]"
+                        cols="30" rows="5" placeholder="Bezi qeydler...(Mecburi deyil)"></textarea>
+                    <div class="py-3 flex justify-center items-center">
+                        <button
+                            class="text-white items-center gap-1 mx-auto border rounded-[0.75rem] py-[15px] px-[6.25rem] text-[17px] font-semibold bg-[rgb(43,196,138)]">Muraciet
+                            et
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+                                class="inline" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
             </div>
-            <form class="px-6">
-                <div class="mb-3">
-                    <input class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px] border border-[rgb(107,114,128)]" type="text" placeholder="Ad ve soyad" required>
-                </div>
-                <div class="flex justify-between mb-3 gap-x-1">
-                    <input class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px] border border-[rgb(107,114,128)]" type="tel" placeholder="Telefon nomreniz" required>
-                    <input class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px] border border-[rgb(107,114,128)]" type="email" placeholder="Elektron poct unvani" required>
-                </div>
-                <textarea class="w-full appearance-none rounded-lg py-[13px] px-[15px] outline-w-[2px]  border border-[rgb(107,114,128)]" cols="30" rows="5" placeholder="Bezi qeydler...(Mecburi deyil)"></textarea>
-                <div class="py-3 flex justify-center items-center">
-                    <button
-                        class="text-white items-center gap-1 mx-auto border rounded-[0.75rem] py-[15px] px-[6.25rem] text-[17px] font-semibold bg-[rgb(43,196,138)]">Muraciet
-                        et
-                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
-                            class="inline" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z">
-                            </path>
-                        </svg>
-                    </button>
-                </div>
-            </form>
         </div>
-    </div>
     </main>
     <footer class="bg-[#faf4ff] mt-12">
         <div
@@ -1419,7 +1195,7 @@
                     <h3 class="my-8 font-bold">Bizi izləyin :</h3>
                     <div class="flex gap-4 items-center flex-wrap">
                         <a target="_blank" href="https://www.facebook.com/wwwsaytaz"
-                            class="text-mainLightPurple hover:text-mainLightPurpleHover active:text-mainLightPurpleActive"><span
+                            class="text-mainLightPurple  hover:text-mainLightPurpleHover active:text-mainLightPurpleActive"><span
                                 class="sr-only">Facebook</span><svg fill="currentColor" viewBox="0 0 24 24"
                                 class="md:h-12 h-8 md:w-12 w-8" style="fill: rgb(162, 113, 242);" aria-hidden="true">
                                 <path fill-rule="evenodd"
@@ -1492,7 +1268,8 @@
             </div>
         </div>
         <hr />
-        <div class="p-4 text-[rgb(74,33,130)] flex mx-auto max-w-[1296px] flex-col-reverse lg:flex-row lg:justify-between">
+        <div
+            class="p-4 text-[rgb(74,33,130)] flex mx-auto max-w-[1296px] flex-col-reverse lg:flex-row lg:justify-between">
             <div class=" flex flex-col md:flex-row gap-4 pb-4 order-1">
                 <div class="flex items-center"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
