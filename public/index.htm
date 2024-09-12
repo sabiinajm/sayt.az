@@ -995,33 +995,35 @@
                 <h1 class="bg-white text-3xl sm:text-4xl font-bold pt-4 px-4">Qiymət təklifi al</h1>
                 <div class="bg-white px-4">
                     <h3 class="pt-11 pb-3 text-lg font-medium text-[#212529]">Statik səhifələr</h3>
-                    <div class="bg-gray-100 pt-4 rounded-lg">
-                        <div class="px-3">
-                            <p class="py-4">Neçə statik səhifə olacag?</p>
-                            <div class="flex items-center">
-                                <span
-                                    class="text-white bg-[#a271f2] flex justify-center items-center h-8 w-8 rounded-lg">1</span>
-                                <input id="sliderRange" type="range" min="100" max="2000" step="100" value="400"
-                                    class="range-slider mx-1 rounded-lg w-full appearance-none h-2 bg-gray-200 " />
-                                <span
-                                    class="text-white bg-[#a271f2] flex justify-center items-center h-8 w-8 rounded-lg">20</span>
-                            </div>
-                            <p class=" py-4">Dizayn mürəkkəbliyi</p>
-                            <div class="flex items-center flex-col">
-                                <div class="flex w-full justify-between mb-8 text-sm">
-                                    <p>Sadə</p>
-                                    <p>Orta</p>
-                                    <p>Xüsusi</p>
+                    <!-- Statik səhifələr -->
+                    <div class="mb-10">
+                        <div class="bg-[#f8f8fa] mt-2 rounded-md  overflow-hidden">
+                            <div class="mt-4 py-2 px-4">
+                                <p class="mb-4">Neçə statik səhifə olacaq?</p>
+                                <div class="flex justify-between items-center"><span
+                                        class="bg-[#a271f2] text-white flex xmd:w-8 w-6 xmd:h-8 h-6 xmd:text-base text-sm items-center justify-center rounded-md">1</span>
+                                        <input oninput="calculate()" id="pageNum"
+                                        class="w-10/12 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#a271f2]"
+                                        min="100" max="2000" step="100" type="range" value="400"><span
+                                        class="bg-[#a271f2] text-white flex xmd:w-8 w-6 xmd:h-8 h-6 xmd:text-base text-sm items-center justify-center rounded-md">20</span>
                                 </div>
-                                <input id="seviyyeRange" type="range" min="1" max="3" step="1" value="1"
-                                    class="range-slider mx-1 w-full rounded-lg appearance-none h-2 bg-gray-200 " />
                             </div>
-                        </div>
-                        <div class="bg-[#dee7f1] rounded-b-lg mt-4 flex items-center justify-between p-4">
-                            <p>Xərc :</p>
-                            <h2 class="text-2xl text-[#a271f2] font-semibold"><span id="sehifeShow"></span> səhifə / ₼
-                                <span id="xerc1">0</span>
-                            </h2>
+                            <div
+                                class="mt-4 py-2 px-4 flex xmd:flex-row flex-col xmd:justify-between xmd:items-center gap-x-2">
+                                <p>Dizayn <span class="whitespace-nowrap"> mürəkkəblik :</span></p>
+                                <div class="flex flex-col justify-center gap-4 xmd:w-4/6 w-full xmd:mt-0 mt-4">
+                                    <div
+                                        class="flex justify-between items-center text-xs xmd:text-base xmd:gap-x-0 gap-x-4 xmd:pr-4 pr-0">
+                                        <span>Sadə</span><span>Orta</span><span>Xüsusi</span></div>
+                                    <div><input oninput="calculate()" id="pageDesign"
+                                            class="md:ml-4 ml-0 md:w-11/12 w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#a271f2]"
+                                            min="1" max="3" step="1" type="range" value="1"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 py-4 px-4 bg-[#4a84bf26]">
+                                <p class="text-[#285a70]">Xərc :</p>
+                                <p id="ntc0" class="text-[#a271f2] sm:text-[22px] font-semibold">4 səhifə / ₼ 400</p>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-10">
@@ -1034,7 +1036,7 @@
                             </div>
                             <div class="flex justify-between items-center mt-4  py-4 px-4 bg-[#4a84bf26]">
                                 <p class="text-[#285a70]">Xərc :</p>
-                                <p id="ntc1" class="text-[#a271f2] sm:text-[22px] font-semibold">₼ 0</p>
+                                <p id="ntc1" class="text-[#a271f2] sm:text-[22px] font-semibold">₼0</p>
                             </div>
                         </div>
                     </div>
@@ -1072,7 +1074,7 @@
                                     <p>Sadə</p>
                                     <p>Xüsusi</p>
                                 </div>
-                                <input id="seviyyeRange2" type="range" min="1" max="3" step="1" value="1"
+                                <input id="designRange" oninput="calculate2()" type="range" min="1" max="3" step="1" value="1"
                                     class="range-slider mx-1 w-full rounded-lg appearance-none h-2 bg-gray-200 " />
                             </div>
                         </div>
@@ -1088,23 +1090,23 @@
                     <p>Təklifimiz</p>
                     <div class="flex justify-between py-2">
                         <p class="text-gray-500">Statik səhifələr :</p>
-                        <p class="text-[#a271f2] font-semibold text-xl">₼ <span id="xerc1copy">0</span></p>
+                        <p class="text-[#a271f2] font-semibold text-xl"><span id="staticCost">₼0</span></p>
                     </div>
                     <div class="flex justify-between py-2">
                         <p class="text-gray-500">Əlavələr :</p>
-                        <p class="text-[#a271f2] font-semibold text-xl">₼ <span id="xerc2copy">0</span></p>
+                        <p class="text-[#a271f2] font-semibold text-xl"><span id="addCost">₼0</span></p>
                     </div>
                     <div class="flex justify-between py-2">
                         <p class="text-gray-500">SEO :</p>
-                        <p class="text-[#a271f2] font-semibold text-xl">₼ <span id="xerc3copy">0</span></p>
+                        <p class="text-[#a271f2] font-semibold text-xl"><span id="seoCost">₼0</span></p>
                     </div>
                     <div class="flex justify-between py-2">
                         <p class="text-gray-500">E-ticarət :</p>
-                        <p class="text-[#a271f2] font-semibold text-xl">₼ <span id="xerc4copy">0</span></p>
+                        <p class="text-[#a271f2] font-semibold text-xl"><span id="eCost">₼0</span></p>
                     </div>
                     <div class="flex justify-between py-2">
                         <p class="text-gray-500">Logo dizayn :</p>
-                        <p class="text-[#a271f2] font-semibold text-xl">₼ <span id="xerc5copy">0</span></p>
+                        <p class="text-[#a271f2] font-semibold text-xl"><span id="logoCost">₼0</span></p>
                     </div>
                     <hr class="my-2" />
                     <div class="flex flex-wrap justify-between py-2 items-center">
@@ -1115,7 +1117,7 @@
                 </div>
                 <div class="flex justify-between items-center p-8 bg-[#a271f2]">
                     <p class="text-white text-xl">Ümumi təxmini dəyəri:</p>
-                    <p class="text-white font-semibold text-xl">₼ <span id="allXerc">450</span></p>
+                    <p class="text-white font-semibold text-xl">₼ <span id="allTotal">450</span></p>
                 </div>
                 <button onclick="displayPopup()"
                     class="bg-[#2bc48a] text-white w-full h-12 rounded-lg my-4 mb-12 font-semibold">Saytınızı indi

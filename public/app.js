@@ -1,5 +1,32 @@
 const data = {
-
+    'costStatic': [
+        {
+            'id': 5,
+            'name': "Page",
+            'price': 100,
+            'type': "static_page"
+        }
+    ],
+    'costDesign': [
+        {
+            'id': 10,
+            'name': "Medium",
+            'price': 2,
+            'type': "design_complexity"
+        },
+        {
+            'id': 12,
+            'name': "Simple",
+            'price': 1,
+            'type': "design_complexity"
+        },
+        {
+            'id': 13,
+            'name': "Custom",
+            'price': 3,
+            'type': "design_complexity"
+        }
+    ],
     "costLogo": [
         {
             "id": 7,
@@ -191,73 +218,23 @@ const data = {
         }
     ]
 }
-const sehifeShow = document.getElementById('sehifeShow')
-const xerc1 = document.getElementById('xerc1')
-const xerc1copy = document.getElementById('xerc1copy')
-const ntc1copy = document.getElementById('ntc1copy')
-const ntc2copy = document.getElementById('ntc2copy')
-const ntc3copy = document.getElementById('ntc3copy')
-const ntc4copy = document.getElementById('ntc4copy')
-const sliderRange = document.getElementById('sliderRange')
-const seviyyeRange = document.getElementById('seviyyeRange')
-const seviyyeRange2 = document.getElementById('seviyyeRange2')
-const bloglar = document.getElementById("bloglar")
-const axtarislar = document.getElementById("axtarislar")
-const ecommerce = document.getElementById("ecommerce")
-const ntc1 = document.getElementById("ntc1")
-const ntc2 = document.getElementById("ntc2")
-const ntc3 = document.getElementById("ntc3")
-const ntc4 = document.getElementById('ntc4')
 
-
-
-function drop(button) {
-    const menuId = button.getAttribute('data-dropdown-toggle')
-    const menu = document.getElementById(menuId)
-    document.querySelectorAll('[data-dropdown-toggle]').forEach(btn => {
-        const otherMenuId = btn.getAttribute('data-dropdown-toggle')
-        const otherMenu = document.getElementById(otherMenuId)
-        if (otherMenuId !== menuId && !otherMenu.classList.contains('hidden')) {
-            otherMenu.classList.add('hidden')
-        }
-    })
-    menu.classList.toggle('hidden')
+const pageNum = document.getElementById('pageNum')
+const pageDesign = document.getElementById('pageDesign')
+const ntc0 = document.getElementById('ntc0')
+const staticCost = document.getElementById('staticCost')
+let totalPages = 0
+function calculate() {
+    totalPages = pageNum.value * pageDesign.value;
+    ntc0.innerHTML = `${pageNum.value / 100} sehife/ ₼ ${totalPages}`
+    staticCost.innerHTML = `₼ ${totalPages}`
+    totalCost()
 }
-function controlMenu() {
-    const hamMenu = document.getElementById('hamburger-menu')
-    hamMenu.classList.toggle('hidden')
-}
-function updateValues() {
-    const seviyyeValue = seviyyeRange.value
-    const sliderRangeVal = sliderRange.value/ 100
-    sehifeShow.innerHTML = sliderRangeVal
-    xerc1.innerHTML = sliderRangeVal * seviyyeValue * 100
-    xerc1copy.innerHTML = xerc1.innerHTML
-}
-
-sliderRange.oninput = function() {
-    const sliderValue = this.value
-    const seviyyeValue = seviyyeRange.value
-    sehifeShow.innerHTML = sliderValue / 100
-    xerc1.innerHTML = sliderValue * seviyyeValue
-    xerc1copy.innerHTML = xerc1.innerHTML
-    const allXerc = document.getElementById('allXerc') 
-    allXerc.innerHTML = xerc1copy.innerHTML
-}
-
-seviyyeRange.oninput = function() {
-    const sliderValue = sliderRange.value
-    xerc1.innerHTML = sliderValue * this.value
-    xerc1copy.innerHTML = xerc1.innerHTML
-    const allXerc = document.getElementById('allXerc') 
-    allXerc.innerHTML = xerc1copy.innerHTML
-}
-updateValues()
-
+window.onload = calculate
 function addElement() {
     data.costAddon.map(item => {
         bloglar.innerHTML += `
-        <label onclick="vebSaytXerc()" class="relative xl:items-center gap-x-2 flex cursor-pointer justify-between">
+        <label onclick="vebPageCostCalc()" class="relative xl:items-center gap-x-2 flex cursor-pointer justify-between">
         <div class="w-3/4"><span class="text-sm font-medium text-gray-900">${item.name}</span></div>
         <div><input value="${item.price}" class="sr-only peer" type="checkbox" name="${item.name}">
         <div
@@ -270,7 +247,7 @@ function addElement() {
     data.costSeo.map(item => {
         axtarislar.innerHTML += `
             <div class="inline-flex items-center">
-            <label  onclick="vebSaytXerc()" class="relative flex items-center mr-2 rounded-full cursor-pointer"
+            <label  onclick="vebPageCostCalc()" class="relative flex items-center mr-2 rounded-full cursor-pointer"
             for="${item.name}" data-ripple-dark="true">
             <input
                         value="${item.price}"
@@ -297,7 +274,7 @@ function addElement() {
 
     data.costEcommerce.map(item => {
         ecommerce.innerHTML += `
-            <label onclick="vebSaytXerc()" class="relative xl:items-center gap-x-2 flex cursor-pointer justify-between">
+            <label onclick="vebPageCostCalc()" class="relative xl:items-center gap-x-2 flex cursor-pointer justify-between">
             <div class="w-3/4"><span class="text-sm font-medium text-gray-900">${item.name}</span>
             </div>
             <div><input value="${item.price}" class="sr-only peer" type="checkbox" name="${item.name}">
@@ -309,7 +286,8 @@ function addElement() {
                     `
     })
 } addElement()
-function vebSaytXerc() {
+
+function vebPageCostCalc() {
     let countBloglar = 0, countAxtarislar = 0, countEcommerce = 0, countLogo = 0
 
     document.querySelectorAll("#bloglar input").forEach(item => {
@@ -324,25 +302,67 @@ function vebSaytXerc() {
         if (item.checked) countEcommerce += +item.value
     })
 
-    const sliderValue = parseInt(seviyyeRange2.value, 10);
-    const selectedOption = data.costLogo[sliderValue - 1];
-    ntc4.textContent = `₼ ${selectedOption.price}`;
+    addCost.innerHTML = "₼" + countBloglar
+    seoCost.innerHTML = "₼" + countAxtarislar
+    eCost.innerHTML = "₼" + countEcommerce
+    logoCost.innerHTML = "₼" + countLogo
+    totalCost()
+}
+const allTotal = document.getElementById('allTotal')
+function totalCost() {
+    ntc1.innerHTML = addCost.innerHTML
+    ntc2.innerHTML = seoCost.innerHTML
+    ntc3.innerHTML = eCost.innerHTML
+    ntc4.innerHTML = logoCost.innerHTML
 
-
-    ntc1.innerHTML = "₼" + countBloglar
-    ntc2.innerHTML = "₼" + countAxtarislar
-    ntc3.innerHTML = "₼" + countEcommerce
-    ntc4.innerHTML = "₼" + countLogo;
-
-    const xerc1copyValue = Number(document.getElementById("xerc1copy").innerText) || 0;
-    const totalCost = countBloglar + countAxtarislar + countEcommerce + countLogo  + xerc1copyValue
-    document.getElementById("allXerc").innerText = "₼" + totalCost; 
-    
-    document.getElementById("xerc2copy").innerText = countBloglar
-    document.getElementById("xerc3copy").innerText = countAxtarislar
-    document.getElementById("xerc4copy").innerText = countEcommerce
+    const staticCost1 = Number(staticCost.innerHTML.replace('₼', ''));
+    const addCostValue = Number(addCost.innerHTML.replace('₼', ''));
+    const seoCostValue = Number(seoCost.innerHTML.replace('₼', ''));
+    const eCostValue = Number(eCost.innerHTML.replace('₼', ''));
+    const logoCostValue = Number(logoCost.innerHTML.replace('₼', ''));
+    const total = staticCost1 + addCostValue + seoCostValue + eCostValue + logoCostValue;
+    allTotal.innerHTML = total;
+    calculate2()
 }
 
+const designRange = document.getElementById('designRange');
+const logoCost = document.getElementById('logoCost');
+
+function calculate2() {
+    const rangeValue = designRange.value;
+    const selectedIndex = data.costLogo.map(i => i.price / 100);
+
+    if (rangeValue - 1 == selectedIndex[2]) {
+        logoCost.innerHTML = "₼" + selectedIndex[2] * 100;
+    }
+    if (rangeValue - 1 == selectedIndex[1]) {
+        logoCost.innerHTML = "₼" + selectedIndex[1] * 100;
+    }
+    if (rangeValue - 1 == selectedIndex[0]) {
+        logoCost.innerHTML = "₼" + selectedIndex[0] * 100;
+    }
+
+    totalCost();
+}
+
+//dropdowns and menu
+
+function drop(button) {
+    const menuId = button.getAttribute('data-dropdown-toggle')
+    const menu = document.getElementById(menuId)
+    document.querySelectorAll('[data-dropdown-toggle]').forEach(btn => {
+        const otherMenuId = btn.getAttribute('data-dropdown-toggle')
+        const otherMenu = document.getElementById(otherMenuId)
+        if (otherMenuId !== menuId && !otherMenu.classList.contains('hidden')) {
+            otherMenu.classList.add('hidden')
+        }
+    })
+    menu.classList.toggle('hidden')
+}
+function controlMenu() {
+    const hamMenu = document.getElementById('hamburger-menu')
+    hamMenu.classList.toggle('hidden')
+}
 
 // popup
 function displayPopup() {
